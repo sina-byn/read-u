@@ -28,8 +28,11 @@ const Home = () => {
 
           <div className='sections-list h-[calc(100%_-_2.5rem)] overflow-y-auto'>
             <ul>
-              {headings?.map(heading => (
-                <li className='flex items-center border-b border-neutral odd:bg-primary-light'>
+              {headings?.map((heading, index) => (
+                <li
+                  key={index}
+                  className='flex items-center border-b border-neutral odd:bg-primary-light'
+                >
                   <a className='w-full text-info truncate px-4 py-3'>
                     {heading.tag} - {heading.text}
                   </a>
