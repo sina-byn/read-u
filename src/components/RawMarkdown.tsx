@@ -10,10 +10,9 @@ const RawMarkdown = () => {
     <div className='wrapper h-full bg-primary overflow-hidden'>
       <textarea
         readOnly
+        value={markdown}
         className='resize-none size-full bg-transparent text-base md:text-lg focus:outline-none p-8'
-      >
-        {markdown}
-      </textarea>
+      />
     </div>
   );
 };
