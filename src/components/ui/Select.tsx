@@ -57,7 +57,7 @@ const Select = <T extends string>({
         className={cn('justify-between px-3 overflow-hidden', className)}
       >
         <div className='inner flex items-center gap-x-3 overflow-hidden'>
-          {icon}
+          <span className='shrink-0'>{icon}</span>
           <span className='truncate'>{selectedOption.title}</span>
         </div>
         <ChevronDown size={16} className='shrink-0' />
