@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 import './globals.css';
 
-// * utils
-import { cn } from '@/utils';
+// * providers
+import AppContextProvider from '@/context/AppContext';
 
 // * components
 import Toolbar from '@/components/Toolbar';
@@ -19,11 +19,13 @@ export default function RootLayout({ children }: LayoutProps) {
   return (
     <html lang='en'>
       <body className='h-svh bg-primary-dark text-gray-200'>
-        <header className='h-16 md:h-24'>
-          <div className='i-container'></div>
-        </header>
-        <Toolbar />
-        {children}
+        <AppContextProvider>
+          <header className='h-16 md:h-24'>
+            <div className='i-container'></div>
+          </header>
+          <Toolbar />
+          {children}
+        </AppContextProvider>
         <div id='modal-root' />
       </body>
     </html>
