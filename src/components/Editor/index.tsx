@@ -22,7 +22,7 @@ const Editor = () => {
   const editorRef = useRef<unknown>(null);
 
   const changeHandler = (newMarkdown?: string) => {
-    localStorage.setItem('__readme_md__', newMarkdown ?? '');
+    localStorage.setItem('__markdown__', newMarkdown ?? '');
     setMarkdown(newMarkdown ?? '');
   };
 
