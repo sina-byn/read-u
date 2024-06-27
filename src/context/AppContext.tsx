@@ -25,13 +25,16 @@ type AppContext = {
   setView: Dispatch<SetStateAction<View>>;
   theme: Theme;
   setTheme: Dispatch<SetStateAction<Theme>>;
+  markdown: string;
+  setMarkdown: Dispatch<SetStateAction<string>>;
 };
 
 const AppContextProvider = ({ children }: ProviderProps) => {
   const [view, setView] = useState<View>('split');
   const [theme, setTheme] = useState<Theme>('light');
+  const [markdown, setMarkdown] = useState<string>('');
 
-  const context = { view, setView, theme, setTheme };
+  const context = { view, setView, theme, setTheme, markdown, setMarkdown };
 
   useEffect(() => {
     const storedTheme = localStorage.getItem('__gfm_theme__') as Theme;
