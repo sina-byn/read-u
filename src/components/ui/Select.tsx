@@ -17,15 +17,21 @@ import { ChevronDown } from 'lucide-react';
 // * types
 type Option = { title: string; value: string };
 
-type SelectProps = {
+type SelectProps<T> = {
   icon?: React.ReactNode;
   options: Option[];
   defaultOption?: Option;
   className?: string;
-  onChange?: (value: string) => void;
+  onChange?: (value: T) => void;
 };
 
-const Select = ({ icon, options, defaultOption, className, onChange }: SelectProps) => {
+const Select = <T extends string>({
+  icon,
+  options,
+  defaultOption,
+  className,
+  onChange,
+}: SelectProps<T>) => {
   const [selectedOption, setSelectedOption] = useState<Option>(defaultOption ?? options[0]);
   const [open, setOpen] = useState<boolean>(false);
   const selectRef = useRef<HTMLDivElement>(null);
@@ -36,7 +42,7 @@ const Select = ({ icon, options, defaultOption, className, onChange }: SelectPro
 
   const changeHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
     const title = e.currentTarget.dataset.title!;
-    const value = e.currentTarget.dataset.value!;
+    const value = e.currentTarget.dataset.value! as T;
 
     setSelectedOption({ title, value });
     onChange?.(value);
