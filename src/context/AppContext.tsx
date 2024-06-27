@@ -31,7 +31,7 @@ type AppContext = {
 
 const AppContextProvider = ({ children }: ProviderProps) => {
   const [view, setView] = useState<View>('split');
-  const [theme, setTheme] = useState<Theme>('light');
+  const [theme, setTheme] = useState<Theme>('dark');
   const [markdown, setMarkdown] = useState<string>('');
 
   const context = { view, setView, theme, setTheme, markdown, setMarkdown };
