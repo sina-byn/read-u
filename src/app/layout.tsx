@@ -27,6 +27,7 @@ export default function RootLayout({ children }: LayoutProps) {
         </header>
         <Toolbar />
         {children}
+        <div id='modal-root' />
       </body>
     </html>
   );
