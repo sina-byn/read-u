@@ -9,7 +9,7 @@ import githubMarkdownCSS from 'generate-github-markdown-css';
 
 // * constants
 const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
-const themes = (await githubMarkdownCSS({ list: true })).split(/\n\r*/).map(t => t.trim());
+const themes = (await githubMarkdownCSS({ list: true })).split(/\r*\n/).map(t => t.trim());
 
 // * utils
 const selector = theme => theme.replace(/_/g, '-');
