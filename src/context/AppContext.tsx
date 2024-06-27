@@ -44,6 +44,17 @@ const AppContextProvider = ({ children }: ProviderProps) => {
     if (storedMarkdown) setMarkdown(storedMarkdown);
     if (storedTheme && themes.includes(storedTheme)) setTheme(storedTheme);
     if (storedView && ['tabs', 'split'].includes(storedView)) setView(storedView);
+
+    console.log('here');
+
+    const storageSyncHandler = (e: StorageEvent) => {
+      if (e.storageArea !== localStorage || e.key !== '__markdown__') return;
+      setMarkdown(e.newValue ?? '');
+    };
+
+    window.addEventListener('storage', storageSyncHandler);
+
+    return () => window.removeEventListener('storage', storageSyncHandler);
   }, []);
 
   return <appContext.Provider value={context}>{children}</appContext.Provider>;
