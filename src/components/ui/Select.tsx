@@ -65,7 +65,7 @@ const Select = <T extends string>({
 
       <div
         className={cn(
-          'options absolute inset-x-0 w-full bg-primary-dark border border-neutral rounded-md overflow-hidden transition-all duration-300 overflow-hidden mt-2',
+          'options absolute inset-x-0 z-10 w-full bg-primary-dark border border-neutral rounded-md overflow-hidden transition-all duration-300 overflow-hidden mt-2',
           open ? 'top-full pointer-events-auto opacity-100' : 'top-2 pointer-events-none opacity-0'
         )}
       >
