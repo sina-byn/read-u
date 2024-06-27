@@ -12,6 +12,9 @@ import Editor from '@/components/Editor';
 import RawMarkdown from '@/components/RawMarkdown';
 import MarkdownDisplay from '@/components/MarkdownDisplay';
 
+// * events
+import { EditorScrollEvent } from '@/utils/events';
+
 const Home = () => {
   const { view, markdown } = useAppContext();
   const headings = extractHeadings(markdown);
@@ -28,14 +31,18 @@ const Home = () => {
 
           <div className='sections-list h-[calc(100%_-_2.5rem)] overflow-y-auto'>
             <ul>
-              {headings?.map((heading, index) => (
+              {headings?.map(heading => (
                 <li
-                  key={index}
+                  key={heading.line}
                   className='flex items-center border-b border-neutral odd:bg-primary-light'
                 >
-                  <a className='w-full text-info truncate px-4 py-3'>
+                  <button
+                    type='button'
+                    className='w-full text-info truncate px-4 py-3'
+                    onClick={EditorScrollEvent.dispatch.bind(null, heading.line)}
+                  >
                     {heading.tag} - {heading.text}
-                  </a>
+                  </button>
                 </li>
               ))}
             </ul>
