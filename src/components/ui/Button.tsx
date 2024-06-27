@@ -11,7 +11,7 @@ type ButtonProps = {
 
 // * data
 const variants = {
-  base: 'flex items-center justify-center gap-2 h-8 rounded-md px-6',
+  base: 'flex items-center justify-center gap-2 h-10 rounded-md px-6',
   primary: 'bg-success',
   secondary: 'bg-primary-light border border-neutral',
 };
