@@ -18,7 +18,7 @@ type LayoutProps = Readonly<{ children: React.ReactNode }>;
 export default function RootLayout({ children }: LayoutProps) {
   return (
     <html lang='en'>
-      <body className='h-svh bg-primary-dark text-gray-200'>
+      <body className='grid grid-rows-[auto,_auto,_1fr] h-svh bg-primary-dark text-gray-200'>
         <AppContextProvider>
           <header className='h-16 md:h-24'>
             <div className='i-container'></div>
