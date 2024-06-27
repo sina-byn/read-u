@@ -3,6 +3,7 @@ import { clsx, type ClassArray } from 'clsx';
 
 // * types
 type Heading = {
+  line: number;
   tag: (typeof tags)[number];
   text: string;
 };
@@ -14,10 +15,12 @@ export const cn = (...inputs: ClassArray) => twMerge(clsx(...inputs));
 export const extractHeadings = (markdown: string) => {
   const lines = markdown.split(/\r*\n/);
   const headings: Heading[] = [];
+  let index = -1;
 
   for (let line of lines) {
     const headingRegex = /^\s{0,3}(#{1,6})(.+)?/g;
     line = line.trimEnd();
+    index++;
 
     const match = headingRegex.exec(line);
     if (!match) continue;
@@ -25,7 +28,7 @@ export const extractHeadings = (markdown: string) => {
     const [_, tagInit, text] = match;
 
     if (!text?.trim()) continue;
-    headings.push({ tag: tags[tagInit.length - 1], text });
+    headings.push({ line: index, tag: tags[tagInit.length - 1], text });
   }
 
   return headings;
