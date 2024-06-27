@@ -1,13 +1,17 @@
 'use client';
 
 // * hooks
-import { useAppContext } from '@/context/AppContext';
+import { useAppContext, type View } from '@/context/AppContext';
+
+// * utils
+import { cn } from '@/utils';
 
 // * components
 import Select from './ui/Select';
+import Button from './ui/Button';
 
 // * icons
-import { Palette } from 'lucide-react';
+import { AppWindow, Palette, SquareSplitHorizontal } from 'lucide-react';
 
 // * data
 export const themes = [
@@ -26,18 +30,40 @@ export const themes = [
 export type Theme = (typeof themes)[number];
 
 const Toolbar = () => {
-  const { theme, setTheme } = useAppContext();
+  const { view, setView, theme, setTheme } = useAppContext();
 
   const changeHandler = (newTheme: Theme) => {
     localStorage.setItem('__gfm_theme__', newTheme);
     setTheme(newTheme);
   };
 
+  const viewToggleHandler = (newView: View) => {
+    localStorage.setItem('__markdown_editor_view__', newView);
+    setView(newView);
+  };
+
   return (
-    <header className='toolbar flex items-center h-16 bg-primary'>
+    <header className='toolbar flex items-center h-fit bg-primary py-4'>
       <div className='i-container flex items-center justify-between gap-x-6'>
         <div className='left'></div>
-        <div className='right'>
+        <div className='right flex items-center gap-x-6'>
+          <div className='view-toggle flex'>
+            <Button
+              variant='secondary'
+              onClick={viewToggleHandler.bind(null, 'tabs')}
+              className={cn('rounded-r-none border-r-0', view === 'tabs' && 'bg-primary-dark')}
+            >
+              <AppWindow />
+            </Button>
+            <Button
+              variant='secondary'
+              onClick={viewToggleHandler.bind(null, 'split')}
+              className={cn('rounded-l-none', view === 'split' && 'bg-primary-dark')}
+            >
+              <SquareSplitHorizontal />
+            </Button>
+          </div>
+
           <Select<Theme>
             key={theme}
             onChange={changeHandler}
