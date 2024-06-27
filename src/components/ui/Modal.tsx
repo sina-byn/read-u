@@ -41,7 +41,7 @@ const Modal = ({
         <div
           style={{ zIndex }}
           onClick={backdropClickHandler}
-          className='modal-backdrop flex items-center justify-center fixed inset-0 bg-black/50'
+          className='modal-backdrop flex items-center justify-center fixed inset-0 bg-black/90'
         >
           <div className='i-container h-full flex items-center justify-center'>
             <div className={cn('modal-wrapper size-fit', className)} onClick={clickHandler}>

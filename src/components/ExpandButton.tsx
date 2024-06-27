@@ -22,8 +22,8 @@ const ExpandButton = ({ title, children }: ExpandButtonProps) => {
     >
       <Modal open={open} setOpen={setOpen} className='i-modal'>
         {closeHandler => (
-          <article className='size-full bg-primary border border-neutral rounded-md'>
-            <header className='flex items-center justify-between gap-x-6 h-10 border-b border-neutral px-4'>
+          <article className='grid grid-rows-[auto,_1fr] size-full bg-primary border border-neutral rounded-md'>
+            <header className='flex items-center justify-between gap-x-6 h-12 border-b border-neutral px-8'>
               <span className='capitalize'>{title}</span>
               <button type='button' onClick={closeHandler}>
                 <X />
