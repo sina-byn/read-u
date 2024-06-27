@@ -24,6 +24,7 @@
     "eslint-config-next": "14.2.4",
     "generate-github-markdown-css": "^6.3.0",
     "postcss": "^8",
+    "sass": "^1.77.6",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
   }
