@@ -14,7 +14,6 @@ const appContext = createContext<AppContext | null>(null);
 
 // * data
 import { themes, type Theme } from '@/components/Toolbar';
-import useSynced from 'use-synced';
 
 // * types
 export type View = 'tabs' | 'split';
@@ -31,16 +30,18 @@ type AppContext = {
 };
 
 const AppContextProvider = ({ children }: ProviderProps) => {
-  const [markdown, setMarkdown] = useSynced<string>('__readme_md__', '');
-  const [theme, setTheme] = useState<Theme>('dark');
   const [view, setView] = useState<View>('split');
+  const [theme, setTheme] = useState<Theme>('dark');
+  const [markdown, setMarkdown] = useState<string>('');
 
   const context = { view, setView, theme, setTheme, markdown, setMarkdown };
 
   useEffect(() => {
+    const storedMarkdown = localStorage.getItem('__readme_md__');
     const storedTheme = localStorage.getItem('__gfm_theme__') as Theme;
     const storedView = localStorage.getItem('__markdown_editor_view__') as View;
 
+    if (storedMarkdown) setMarkdown(storedMarkdown);
     if (storedTheme && themes.includes(storedTheme)) setTheme(storedTheme);
     if (storedView && ['tabs', 'split'].includes(storedView)) setView(storedView);
   }, []);

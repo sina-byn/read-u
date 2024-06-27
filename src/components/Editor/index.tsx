@@ -15,7 +15,10 @@ import Loader from './Loader';
 const Editor = () => {
   const { markdown, setMarkdown } = useAppContext();
 
-  const changeHandler = (newMarkdown?: string) => setMarkdown(newMarkdown ?? '');
+  const changeHandler = (newMarkdown?: string) => {
+    localStorage.setItem('__readme_md__', newMarkdown ?? '');
+    setMarkdown(newMarkdown ?? '');
+  };
 
   const mountHandler = (_: unknown, monaco: Monaco) => {
     // @ts-ignore
