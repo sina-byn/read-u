@@ -1,14 +1,22 @@
 'use client';
 
-import { useState, useContext, createContext, type Dispatch, type SetStateAction } from 'react';
+import {
+  useState,
+  useEffect,
+  useContext,
+  createContext,
+  type Dispatch,
+  type SetStateAction,
+} from 'react';
 
 // * context
 const appContext = createContext<AppContext | null>(null);
 
-// * types
-import type { Theme } from '@/components/Toolbar';
+// * data
+import { themes, type Theme } from '@/components/Toolbar';
 
-type View = 'tabs' | 'split';
+// * types
+export type View = 'tabs' | 'split';
 
 type ProviderProps = { children: React.ReactNode };
 
@@ -24,6 +32,13 @@ const AppContextProvider = ({ children }: ProviderProps) => {
   const [theme, setTheme] = useState<Theme>('light');
 
   const context = { view, setView, theme, setTheme };
+
+  useEffect(() => {
+    const storedTheme = localStorage.getItem('__gfm_theme__') as Theme;
+
+    if (!storedTheme || !themes.includes(storedTheme)) return;
+    setTheme(storedTheme);
+  }, []);
 
   return <appContext.Provider value={context}>{children}</appContext.Provider>;
 };
