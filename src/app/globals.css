@@ -13,4 +13,8 @@
   .i-container {
     @apply w-full max-w-[1660px] px-4 md:px-6 mx-auto;
   }
+
+  .i-modal {
+    @apply !w-full !h-[calc(100%_-_32px)] md:!h-[calc(100%_-_48px)];
+  }
 }
