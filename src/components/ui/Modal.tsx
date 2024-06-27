@@ -43,8 +43,10 @@ const Modal = ({
           onClick={backdropClickHandler}
           className='modal-backdrop flex items-center justify-center fixed inset-0 bg-black/50'
         >
-          <div className={cn('modal-wrapper size-fit', className)} onClick={clickHandler}>
-            {typeof children === 'function' ? children(closeHandler) : children}
+          <div className='i-container h-full flex items-center justify-center'>
+            <div className={cn('modal-wrapper size-fit', className)} onClick={clickHandler}>
+              {typeof children === 'function' ? children(closeHandler) : children}
+            </div>
           </div>
         </div>,
         document.getElementById('modal-root')!
