@@ -23,10 +23,15 @@ const Modal = ({ open, setOpen, className, children, closeable = true }: ModalPr
 
   const clickHandler = (e: React.MouseEvent) => e.stopPropagation();
 
+  const backdropClickHandler = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    closeHandler();
+  };
+
   return isClient && open
     ? createPortal(
         <div
-          onClick={closeHandler}
+          onClick={backdropClickHandler}
           className='modal-backdrop flex items-center justify-center fixed inset-0 z-50 bg-black/50'
         >
           <div className={cn('modal-wrapper size-fit', className)} onClick={clickHandler}>
