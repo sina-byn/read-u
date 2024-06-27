@@ -1,7 +1,7 @@
 'use client';
 
 // * dompurify
-import DOMPurify from 'dompurify';
+import DOMPurify from 'isomorphic-dompurify';
 
 // * showdown
 import Showdown from 'showdown';
