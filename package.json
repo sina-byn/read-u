@@ -23,6 +23,7 @@
     "eslint": "^8",
     "eslint-config-next": "14.2.4",
     "generate-github-markdown-css": "^6.3.0",
+    "node-fetch": "^3.3.2",
     "postcss": "^8",
     "sass": "^1.77.6",
     "tailwindcss": "^3.4.1",
