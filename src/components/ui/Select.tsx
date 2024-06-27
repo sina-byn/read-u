@@ -18,13 +18,14 @@ import { ChevronDown } from 'lucide-react';
 type Option = { title: string; value: string };
 
 type SelectProps = {
+  icon?: React.ReactNode;
   options: Option[];
   defaultOption?: Option;
   className?: string;
   onChange?: (value: string) => void;
 };
 
-const Select = ({ options, defaultOption, className, onChange }: SelectProps) => {
+const Select = ({ icon, options, defaultOption, className, onChange }: SelectProps) => {
   const [selectedOption, setSelectedOption] = useState<Option>(defaultOption ?? options[0]);
   const [open, setOpen] = useState<boolean>(false);
   const selectRef = useRef<HTMLDivElement>(null);
@@ -47,25 +48,34 @@ const Select = ({ options, defaultOption, className, onChange }: SelectProps) =>
       <Button
         variant='secondary'
         onClick={toggleHandler}
-        className={cn('justify-between px-3', className)}
+        className={cn('justify-between px-3 overflow-hidden', className)}
       >
-        <span className='truncate'>{selectedOption.title}</span>
+        <div className='inner flex items-center gap-x-3 overflow-hidden'>
+          {icon}
+          <span className='truncate'>{selectedOption.title}</span>
+        </div>
         <ChevronDown size={16} className='shrink-0' />
       </Button>
 
       <div
         className={cn(
-          'options absolute inset-x-0 bg-primary border border-neutral rounded-md overflow-hidden transition-all duration-300 mt-2',
+          'options absolute inset-x-0 w-full bg-primary-dark border border-neutral rounded-md overflow-hidden transition-all duration-300 overflow-hidden mt-2',
           open ? 'top-full pointer-events-auto opacity-100' : 'top-2 pointer-events-none opacity-0'
         )}
       >
         {options.map(option => (
           <button
             type='button'
+            key={option.title}
             onClick={changeHandler}
             data-value={option.value}
             data-title={option.title}
-            className='flex items-center justify-center w-full h-8 bg-primary even:bg-primary-light hover:bg-primary-dark border-b border-neutral last:border-b-0 cursor-pointer'
+            className={cn(
+              'flex items-center justify-center w-full h-8 truncate capitalize hover:bg-primary-dark border-b border-neutral last:border-b-0 cursor-pointer px-10',
+              option.value === selectedOption.value
+                ? 'bg-blue-900/60'
+                : 'bg-primary even:bg-primary-light'
+            )}
           >
             {option.title}
           </button>
