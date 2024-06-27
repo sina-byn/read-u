@@ -37,9 +37,11 @@ const AppContextProvider = ({ children }: ProviderProps) => {
   const context = { view, setView, theme, setTheme, markdown, setMarkdown };
 
   useEffect(() => {
+    const storedMarkdown = localStorage.getItem('__readme_md__');
     const storedTheme = localStorage.getItem('__gfm_theme__') as Theme;
     const storedView = localStorage.getItem('__markdown_editor_view__') as View;
 
+    setMarkdown(storedMarkdown ?? '');
     if (storedTheme && themes.includes(storedTheme)) setTheme(storedTheme);
     if (storedView && ['tabs', 'split'].includes(storedView)) setView(storedView);
   }, []);
