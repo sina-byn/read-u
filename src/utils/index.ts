@@ -12,6 +12,15 @@ const tags = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'] as const;
 
 export const cn = (...inputs: ClassArray) => twMerge(clsx(...inputs));
 
+export const moveCursorToEnd = (el: HTMLElement) => {
+  const range = document.createRange();
+  const selection = window.getSelection();
+  range.selectNodeContents(el);
+  range.collapse(false);
+  selection?.removeAllRanges();
+  selection?.addRange(range);
+};
+
 export const extractHeadings = (markdown: string) => {
   const lines = markdown.split(/\r*\n/);
   const headings: Heading[] = [];
