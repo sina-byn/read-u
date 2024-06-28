@@ -45,8 +45,6 @@ const AppContextProvider = ({ children }: ProviderProps) => {
     if (storedTheme && themes.includes(storedTheme)) setTheme(storedTheme);
     if (storedView && ['tabs', 'split'].includes(storedView)) setView(storedView);
 
-    console.log('here');
-
     const storageSyncHandler = (e: StorageEvent) => {
       if (e.storageArea !== localStorage || e.key !== '__markdown__') return;
       setMarkdown(e.newValue ?? '');
