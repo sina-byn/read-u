@@ -12,11 +12,11 @@ const padCellText = (text: string, colMax: number) => {
   return text.padEnd(text.length + endPadding);
 };
 
-const markdownCell = (text: string, colMax: number, last: boolean = false) => {
+const markdownCell = (text: string, colMax: number, first: boolean = false) => {
   text = text.length === 0 ? '   ' : text;
   text = padCellText(text, colMax);
 
-  return last ? `${text}|` : `|${text}|`;
+  return first ? `|${text}|` : `${text}|`;
 };
 
 export const vectorToMarkdown = (vector: Vector) => {
@@ -31,7 +31,7 @@ export const vectorToMarkdown = (vector: Vector) => {
 
   const markdownVector = vector.map(row => {
     return row
-      .map((cell, colIndex) => markdownCell(cell, colsMax[colIndex], colIndex === colCount - 1))
+      .map((cell, colIndex) => markdownCell(cell, colsMax[colIndex], colIndex === 0))
       .join('');
   });
 
@@ -42,7 +42,7 @@ export const vectorToMarkdown = (vector: Vector) => {
       const dashCount = Math.max(3, colsMax[index]);
       const cellText = Array(dashCount + 2).fill('-').join('');
 
-      return markdownCell(cellText, colsMax[index], index === colCount - 1);
+      return markdownCell(cellText, colsMax[index], index === 0);
     }).join('')
   );
 
