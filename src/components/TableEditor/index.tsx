@@ -28,6 +28,7 @@ const TableEditor = () => {
   const [open, setOpen] = useState<boolean>(true);
 
   const [vector, setVector] = useState<Vector>(DEFAULT_VECTOR);
+  const vectorMarkdown = vectorToMarkdown(vector);
   const colCount = vector[0].length;
   const rowCount = vector.length;
 
@@ -96,9 +97,9 @@ const TableEditor = () => {
               </button>
             </header>
 
-            <header className='editor-toolbar border-b border-neutral'>
-              <div className='left'></div>
-              <div className='right'></div>
+            <header className='editor-toolbar flex justify-between items-center border-b border-neutral px-8'>
+              <div className='left flex items-center gap-x-6'></div>
+              <div className='right flex items-center gap-x-6'></div>
             </header>
 
             <div className='table-editor grid grid-cols-2 overflow-hidden'>
@@ -145,7 +146,7 @@ const TableEditor = () => {
                   <div className='side flex items-center justify-center absolute right-0 inset-y-0 z-10 w-16 bg-inherit'>
                     <Button
                       base={false}
-                      variant='primary'
+                      variant='info'
                       onClick={insertCol}
                       className='flex justify-center items-center w-8 h-24 bg-info opacity-30 hover:opacity-100 rounded-md -mt-16'
                     >
@@ -156,7 +157,7 @@ const TableEditor = () => {
                   <div className='bottom flex items-center justify-center absolute bottom-0 inset-x-0 z-10 h-16 bg-inherit'>
                     <Button
                       base={false}
-                      variant='primary'
+                      variant='info'
                       onClick={insertRow}
                       className='flex justify-center items-center w-24 h-8 bg-info opacity-30 hover:opacity-100 rounded-md -ml-16'
                     >
@@ -168,7 +169,7 @@ const TableEditor = () => {
 
               <textarea
                 readOnly
-                value={vectorToMarkdown(vector)}
+                value={vectorMarkdown}
                 className='markdown resize-none bg-transparent text-lg border-l border-neutral focus:outline-none p-8'
               />
             </div>
