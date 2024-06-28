@@ -9,9 +9,10 @@ import { cn } from '@/utils';
 // * components
 import Select from './ui/Select';
 import Button from './ui/Button';
+import TableEditor from './TableEditor';
 
 // * icons
-import { AppWindow, Palette, SquareSplitHorizontal } from 'lucide-react';
+import { Palette, AppWindow, SquareSplitHorizontal } from 'lucide-react';
 
 // * data
 export const themes = [
@@ -45,7 +46,10 @@ const Toolbar = () => {
   return (
     <header className='toolbar flex items-center h-fit bg-primary py-4'>
       <div className='i-container flex items-center justify-between gap-x-6'>
-        <div className='left'></div>
+        <div className='left flex items-center gap-x-6'>
+          <TableEditor />
+        </div>
+
         <div className='right flex items-center gap-x-6'>
           <div className='view-toggle flex'>
             <Button
