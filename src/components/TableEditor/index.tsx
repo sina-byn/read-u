@@ -2,6 +2,7 @@ import { useState, useEffect, createRef } from 'react';
 
 // * utils
 import { moveCursorToEnd } from '@/utils';
+import { vectorToMarkdown } from '@/utils/vector';
 
 // * components
 import Modal from '../ui/Modal';
@@ -19,7 +20,7 @@ const DEFAULT_VECTOR: Vector = [
 ];
 
 // * types
-type Vector = string[][];
+export type Vector = string[][];
 
 type InputVector = React.RefObject<HTMLInputElement>[][];
 
@@ -167,8 +168,8 @@ const TableEditor = () => {
 
               <textarea
                 readOnly
-                value=''
-                className='markdown resize-none bg-transparent border-l border-neutral focus:outline-none'
+                value={vectorToMarkdown(vector)}
+                className='markdown resize-none bg-transparent text-lg border-l border-neutral focus:outline-none p-8'
               />
             </div>
           </article>
