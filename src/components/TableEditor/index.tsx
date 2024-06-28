@@ -8,6 +8,7 @@ import { vectorToMarkdown } from '@/utils/vector';
 import Modal from '../ui/Modal';
 import Button from '../ui/Button';
 import CellInput from './CellInput';
+import CopyButton from '../ui/CopyButton';
 
 // * icons
 import { X, Table2, Plus } from 'lucide-react';
@@ -99,7 +100,9 @@ const TableEditor = () => {
 
             <header className='editor-toolbar flex justify-between items-center border-b border-neutral px-8'>
               <div className='left flex items-center gap-x-6'></div>
-              <div className='right flex items-center gap-x-6'></div>
+              <div className='right flex items-center gap-x-6'>
+                <CopyButton text={vectorMarkdown} />
+              </div>
             </header>
 
             <div className='table-editor grid grid-cols-2 overflow-hidden'>
