@@ -48,4 +48,6 @@ const CellInput = forwardRef<HTMLInputElement, CellInputProps>(
   }
 );
 
+CellInput.displayName = 'CellInput';
+
 export default CellInput;
