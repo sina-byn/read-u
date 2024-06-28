@@ -1,6 +1,10 @@
 import type { Metadata } from 'next';
 import './globals.css';
 
+// * react-toastify
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 // * providers
 import AppContextProvider from '@/context/AppContext';
 
@@ -26,6 +30,7 @@ export default function RootLayout({ children }: LayoutProps) {
           <Toolbar />
           {children}
         </AppContextProvider>
+        <ToastContainer theme='dark' autoClose={3000} toastClassName='!bg-primary-light mr-1' />
         <div id='modal-root' />
       </body>
     </html>
