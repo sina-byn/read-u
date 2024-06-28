@@ -1,5 +1,9 @@
-// * components
 import { useState } from 'react';
+
+// * react-toastify
+import { toast } from 'react-toastify';
+
+// * components
 import Button from './Button';
 
 // * icons
@@ -12,7 +16,10 @@ const CopyButton = ({ text }: CopyButtonProps) => {
   const [copied, setCopied] = useState<boolean>(false);
 
   const copyHandler = () => {
-    if (!text.length || !('clipboard' in navigator)) {
+    if (!text || !text.length) return;
+    
+    if (!('clipboard' in navigator)) {
+      toast.error('This feature is not supported by your browser');
       return;
     }
 
@@ -27,6 +34,7 @@ const CopyButton = ({ text }: CopyButtonProps) => {
         }, 500);
       })
       .catch(err => {
+        toast.error('Failed to copy markdown to clipboard. Please try again or copy it manually.');
         console.error(err);
       });
   };
