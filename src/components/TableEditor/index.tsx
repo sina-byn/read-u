@@ -1,17 +1,18 @@
 import { useState, useEffect, createRef } from 'react';
 
 // * utils
-import { moveCursorToEnd } from '@/utils';
+import { cn, moveCursorToEnd } from '@/utils';
 import { vectorToMarkdown } from '@/utils/vector';
 
 // * components
 import Modal from '../ui/Modal';
 import Button from '../ui/Button';
 import CellInput from './CellInput';
+import ViewToggle from './ViewToggle';
 import CopyButton from '../ui/CopyButton';
 
 // * icons
-import { X, Table2, Plus } from 'lucide-react';
+import { X, Plus, Table2 } from 'lucide-react';
 
 // * data
 const DEFAULT_VECTOR: Vector = [
@@ -21,11 +22,14 @@ const DEFAULT_VECTOR: Vector = [
 ];
 
 // * types
+import type { View } from './ViewToggle';
+
 export type Vector = string[][];
 
 type InputVector = React.RefObject<HTMLInputElement>[][];
 
 const TableEditor = () => {
+  const [view, setView] = useState<View>('split');
   const [open, setOpen] = useState<boolean>(true);
 
   const [vector, setVector] = useState<Vector>(DEFAULT_VECTOR);
@@ -101,12 +105,20 @@ const TableEditor = () => {
             <header className='editor-toolbar flex justify-between items-center border-b border-neutral px-8'>
               <div className='left flex items-center gap-x-6'></div>
               <div className='right flex items-center gap-x-6'>
+                <ViewToggle view={view} setView={setView} />
                 <CopyButton text={vectorMarkdown} />
               </div>
             </header>
 
-            <div className='table-editor grid grid-cols-2 overflow-hidden'>
-              <div className='editor-wrapper relataive size-full overflow-hidden'>
+            <div
+              className={cn('table-editor grid overflow-hidden', view === 'split' && 'grid-cols-2')}
+            >
+              <div
+                className={cn(
+                  'editor-wrapper relataive size-full overflow-hidden',
+                  view === 'preview' && 'hidden'
+                )}
+              >
                 <div className='editor size-full relative !overflow-hidden'>
                   <div className='table-wrapper size-[calc(100%_-_64px)] overflow-auto'>
                     <table className=''>
@@ -170,7 +182,14 @@ const TableEditor = () => {
                 </div>
               </div>
 
-              <code className='border-l border-neutral whitespace-pre overflow-auto p-8'>{vectorMarkdown}</code>
+              <code
+                className={cn(
+                  'markdown-preview border-l border-neutral whitespace-pre overflow-auto p-8',
+                  view === 'editor' && 'hidden'
+                )}
+              >
+                {vectorMarkdown}
+              </code>
             </div>
           </article>
         )}
