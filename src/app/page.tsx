@@ -38,10 +38,13 @@ const Home = () => {
                 >
                   <button
                     type='button'
-                    className='w-full text-info truncate px-4 py-3'
                     onClick={EditorScrollEvent.dispatch.bind(null, heading.line)}
+                    className='w-full text-info text-left text-sm truncate px-4 py-3'
                   >
-                    {heading.tag} - {heading.text}
+                    L : {heading.line}
+                    <span className='text-white'>
+                      &nbsp;- <span className='capitalize'>{heading.tag}</span> - {heading.text}
+                    </span>
                   </button>
                 </li>
               ))}
