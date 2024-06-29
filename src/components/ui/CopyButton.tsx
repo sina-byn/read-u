@@ -40,8 +40,8 @@ const CopyButton = ({ text }: CopyButtonProps) => {
   };
 
   return (
-    <Button disabled={copied} variant='info' className='w-32' onClick={copyHandler}>
-      {copied ? <ClipboardCheck className='shrink-0' /> : <Clipboard className='shrink-0' />}
+    <Button disabled={copied} variant='info' className='w-24 text-sm' onClick={copyHandler}>
+      {copied ? <ClipboardCheck size={22} className='shrink-0' /> : <Clipboard size={22} className='shrink-0' />}
       <span className='font-medium capitalize -mt-0.5'>{copied ? 'copied' : 'copy'}</span>
     </Button>
   );
