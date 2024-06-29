@@ -54,7 +54,7 @@ const Select = <T extends string>({
       <Button
         variant='secondary'
         onClick={toggleHandler}
-        className={cn('justify-between px-3 overflow-hidden', className)}
+        className={cn('justify-between overflow-hidden', className)}
       >
         <div className='inner flex items-center gap-x-3 overflow-hidden'>
           <span className='shrink-0'>{icon}</span>
