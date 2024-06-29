@@ -41,7 +41,8 @@ const Home = () => {
                     onClick={EditorScrollEvent.dispatch.bind(null, heading.line)}
                     className='w-full text-info text-left text-sm truncate px-4 py-3'
                   >
-                    L : {heading.line}
+                    L<span className='px-0.5'>:</span>
+                    {heading.line}
                     <span className='text-white'>
                       &nbsp;- <span className='capitalize'>{heading.tag}</span> - {heading.text}
                     </span>
