@@ -17,7 +17,7 @@ const CopyButton = ({ text }: CopyButtonProps) => {
 
   const copyHandler = () => {
     if (!text || !text.length) return;
-    
+
     if (!('clipboard' in navigator)) {
       toast.error('This feature is not supported by your browser');
       return;
@@ -40,8 +40,12 @@ const CopyButton = ({ text }: CopyButtonProps) => {
   };
 
   return (
-    <Button disabled={copied} variant='info' className='w-24 text-sm' onClick={copyHandler}>
-      {copied ? <ClipboardCheck size={22} className='shrink-0' /> : <Clipboard size={22} className='shrink-0' />}
+    <Button disabled={copied} variant='success' className='w-24 text-sm' onClick={copyHandler}>
+      {copied ? (
+        <ClipboardCheck size={22} className='shrink-0' />
+      ) : (
+        <Clipboard size={22} className='shrink-0' />
+      )}
       <span className='font-medium capitalize -mt-0.5'>{copied ? 'copied' : 'copy'}</span>
     </Button>
   );
