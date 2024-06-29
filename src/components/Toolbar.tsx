@@ -1,5 +1,7 @@
 'use client';
 
+import Link from 'next/link';
+
 // * hooks
 import { useAppContext, type View } from '@/context/AppContext';
 
@@ -12,7 +14,7 @@ import Button from './ui/Button';
 import TableEditor from './TableEditor';
 
 // * icons
-import { Palette, AppWindow, SquareSplitHorizontal } from 'lucide-react';
+import { Palette, AppWindow, PictureInPicture, SquareSplitHorizontal } from 'lucide-react';
 
 // * data
 export const themes = [
@@ -51,6 +53,12 @@ const Toolbar = () => {
         </div>
 
         <div className='right flex items-center gap-x-6'>
+          <Button className='new-tab-button p-0' variant='secondary'>
+            <Link href='/' target='_blank' className='h-full flex items-center justify-center px-3'>
+              <PictureInPicture size={22} className='shrink-0 -scale-y-100' />
+            </Link>
+          </Button>
+
           <div className='view-toggle flex'>
             <Button
               variant='secondary'

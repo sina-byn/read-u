@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { useState, useEffect, useCallback, createRef } from 'react';
 import { useSearchParams } from 'next/navigation';
 
@@ -13,7 +14,7 @@ import ViewToggle from './ViewToggle';
 import CopyButton from '../ui/CopyButton';
 
 // * icons
-import { X, Plus, Table2 } from 'lucide-react';
+import { X, Plus, Table2, PictureInPicture } from 'lucide-react';
 
 // * data
 const DEFAULT_VECTOR: Vector = [
@@ -140,9 +141,19 @@ const TableEditor = () => {
             </header>
 
             <header className='editor-toolbar flex justify-between items-center border-b border-neutral px-8'>
-              <div className='left flex items-center gap-x-6'></div>
-              <div className='right flex items-center gap-x-6'>
+              <div className='left flex items-center gap-x-6'>
                 <ViewToggle view={view} setView={setView} />
+              </div>
+              <div className='right flex items-center gap-x-6'>
+                <Button className='new-tab-button p-0' variant='secondary'>
+                  <Link
+                    target='_blank'
+                    href='?table_editor=true'
+                    className='h-full flex items-center justify-center px-3'
+                  >
+                    <PictureInPicture size={22} className='shrink-0 -scale-y-100' />
+                  </Link>
+                </Button>
                 <CopyButton text={vectorMarkdown} />
               </div>
             </header>
