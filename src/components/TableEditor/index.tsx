@@ -1,4 +1,4 @@
-import { useState, useEffect, createRef } from 'react';
+import { useState, useEffect, useCallback, createRef } from 'react';
 
 // * utils
 import { cn, moveCursorToEnd } from '@/utils';
@@ -28,14 +28,26 @@ export type Vector = string[][];
 
 type InputVector = React.RefObject<HTMLInputElement>[][];
 
+type SetVector = Vector | ((oldVector: Vector) => Vector);
+
 const TableEditor = () => {
   const [view, setView] = useState<View>('split');
   const [open, setOpen] = useState<boolean>(true);
+  const [force, setForce] = useState<number>(0);
 
-  const [vector, setVector] = useState<Vector>(DEFAULT_VECTOR);
+  const [vector, _setVector] = useState<Vector>(DEFAULT_VECTOR);
   const vectorMarkdown = vectorToMarkdown(vector);
   const colCount = vector[0].length;
   const rowCount = vector.length;
+
+  const setVector = useCallback((v: SetVector) => {
+    _setVector(prev => {
+      const newVector = typeof v === 'function' ? v(prev) : v;
+      localStorage.setItem('__markdown_table__', JSON.stringify(newVector));
+
+      return newVector;
+    });
+  }, []);
 
   const inputVector: InputVector = Array.from({ length: rowCount }, () =>
     Array.from({ length: colCount }, () => createRef<HTMLInputElement>())
@@ -51,6 +63,29 @@ const TableEditor = () => {
       return newVector;
     });
   };
+
+  useEffect(() => {
+    const initVector = () => {
+      try {
+        const parsedVector: Vector = JSON.parse(localStorage.getItem('__markdown_table__') ?? '');
+        _setVector(parsedVector || DEFAULT_VECTOR);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
+    const storageSyncHandler = (e: StorageEvent) => {
+      if (e.storageArea !== localStorage || e.key !== '__markdown_table__') return;
+      setForce(prev => (prev === 0 ? 1 : 0));
+
+      initVector();
+    };
+
+    initVector();
+    window.addEventListener('storage', storageSyncHandler);
+
+    return () => window.removeEventListener('storage', storageSyncHandler);
+  }, []);
 
   useEffect(() => {
     const keyDownHandler = (e: KeyboardEvent) => {
@@ -145,6 +180,7 @@ const TableEditor = () => {
                                 row.map((_, colIndex) => (
                                   <td key={colIndex} className='font-light border border-neutral'>
                                     <CellInput
+                                      key={force}
                                       setVector={setVector}
                                       cell={[rowIndex + 1, colIndex]}
                                       value={vector[rowIndex + 1][colIndex]}
