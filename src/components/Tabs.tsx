@@ -46,8 +46,8 @@ const Tabs = ({ heads, children }: TabsProps) => {
           <ExpandButton title={heads[activeTab]}>{tab}</ExpandButton>
         </div>
       </header>
-      
-      <div ref={tabRef} className='tab h-full border border-neutral rounded-b-md overflow-hidden'>
+
+      <div ref={tabRef} className='tab h-full border border-neutral rounded-b-md overflow-y-auto'>
         {tab}
       </div>
     </div>
