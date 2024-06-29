@@ -42,7 +42,7 @@ const FullscreenButton = forwardRef<HTMLElement>((_, ref) => {
       disabled={!isFullscreenSupported}
       className='hover:bg-primary [&:disabled_*]:opacity-50 border-b-0 rounded-b-none rounded-r-none'
     >
-      <Fullscreen />
+      <Fullscreen size={22} />
     </Button>
   );
 });

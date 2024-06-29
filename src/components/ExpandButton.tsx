@@ -33,7 +33,7 @@ const ExpandButton = ({ title, children }: ExpandButtonProps) => {
           </article>
         )}
       </Modal>
-      <Expand />
+      <Expand size={22} />
     </Button>
   );
 };
