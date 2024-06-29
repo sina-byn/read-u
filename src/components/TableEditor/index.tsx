@@ -170,11 +170,7 @@ const TableEditor = () => {
                 </div>
               </div>
 
-              <textarea
-                readOnly
-                value={vectorMarkdown}
-                className='markdown resize-none bg-transparent text-lg border-l border-neutral focus:outline-none p-8'
-              />
+              <code className='border-l border-neutral whitespace-pre overflow-auto p-8'>{vectorMarkdown}</code>
             </div>
           </article>
         )}
