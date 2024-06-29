@@ -32,7 +32,7 @@ const Tabs = ({ heads, children }: TabsProps) => {
               variant='secondary'
               onClick={setActiveTab.bind(null, index)}
               className={cn(
-                'capitalize border-b-0 rounded-none first:rounded-tl-md last:rounded-tr-md',
+                'tab-button capitalize border-b-0 border-l-0 first:border-l rounded-none first:rounded-tl-md last:rounded-tr-md',
                 index === activeTab && 'bg-primary'
               )}
             >
