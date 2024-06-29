@@ -37,7 +37,7 @@ export const extractHeadings = (markdown: string) => {
     const [_, tagInit, text] = match;
 
     if (!text?.trim()) continue;
-    headings.push({ line: index, tag: tags[tagInit.length - 1], text });
+    headings.push({ line: index + 1, tag: tags[tagInit.length - 1], text });
   }
 
   return headings;
