@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback, createRef } from 'react';
+import { useSearchParams } from 'next/navigation';
 
 // * utils
 import { cn, moveCursorToEnd } from '@/utils';
@@ -31,9 +32,10 @@ type InputVector = React.RefObject<HTMLInputElement>[][];
 type SetVector = Vector | ((oldVector: Vector) => Vector);
 
 const TableEditor = () => {
-  const [view, setView] = useState<View>('split');
-  const [open, setOpen] = useState<boolean>(true);
+  const params = useSearchParams();
   const [force, setForce] = useState<number>(0);
+  const [view, setView] = useState<View>('split');
+  const [open, setOpen] = useState<boolean>(params.get('table_editor') === 'true' ? true : false);
 
   const [vector, _setVector] = useState<Vector>(DEFAULT_VECTOR);
   const vectorMarkdown = vectorToMarkdown(vector);
