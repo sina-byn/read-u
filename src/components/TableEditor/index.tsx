@@ -67,6 +67,31 @@ const TableEditor = () => {
     });
   };
 
+  const deleteRow = (rowIndex: number) => {
+    setVector(prev => {
+      if (rowCount === 1) return prev;
+
+      const newVector = prev.slice();
+      newVector.splice(rowIndex, 1);
+      return newVector;
+    });
+  };
+
+  const deleteCol = (colIndex: number) => {
+    setVector(prev => {
+      if (colCount === 1) return prev;
+
+      const newVector = prev.map(row => {
+        const newRow = row.slice();
+        newRow.splice(colIndex, 1);
+
+        return newRow;
+      });
+
+      return newVector;
+    });
+  };
+
   useEffect(() => {
     const initVector = () => {
       try {
@@ -155,6 +180,7 @@ const TableEditor = () => {
               <div className='left flex items-center gap-x-6'>
                 <ViewToggle view={view} setView={setView} />
               </div>
+
               <div className='right flex items-center gap-x-6'>
                 <Button className='new-tab-button p-0' variant='secondary'>
                   <Link
@@ -165,6 +191,7 @@ const TableEditor = () => {
                     <PictureInPicture size={22} className='shrink-0 -scale-y-100' />
                   </Link>
                 </Button>
+
                 <CopyButton text={vectorMarkdown} />
               </div>
             </header>
@@ -193,6 +220,17 @@ const TableEditor = () => {
                               />
                             </th>
                           ))}
+
+                          {rowCount > 1 && (
+                            <th className='row-delete-button size-12'>
+                              <Button
+                                onClick={deleteRow.bind(null, 0)}
+                                className='flex items-center justify-center size-full bg-red-600/60 hover:bg-red-600 p-3'
+                              >
+                                <X size={16} />
+                              </Button>
+                            </th>
+                          )}
                         </tr>
                       </thead>
 
@@ -212,8 +250,32 @@ const TableEditor = () => {
                                     />
                                   </td>
                                 ))}
+
+                              <td className='row-delete-button size-12'>
+                                <Button
+                                  onClick={deleteRow.bind(null, rowIndex + 1)}
+                                  className='flex items-center justify-center size-full bg-red-600/60 hover:bg-red-600 p-3'
+                                >
+                                  <X size={16} />
+                                </Button>
+                              </td>
                             </tr>
                           ))}
+
+                        {colCount > 1 && (
+                          <tr>
+                            {vector[0].map((_, index) => (
+                              <td key={index} data-col={index}>
+                                <Button
+                                  onClick={deleteCol.bind(null, index)}
+                                  className='flex items-center justify-center w-full h-12 bg-red-600/60 hover:bg-red-600 p-3'
+                                >
+                                  <X size={16} />
+                                </Button>
+                              </td>
+                            ))}
+                          </tr>
+                        )}
                       </tbody>
                     </table>
                   </div>
