@@ -10,6 +10,7 @@ import { vectorToMarkdown } from '@/utils/vector';
 import Modal from '../ui/Modal';
 import Button from '../ui/Button';
 import CellInput from './CellInput';
+import ResetModal from './ResetModal';
 import ViewToggle from './ViewToggle';
 import CopyButton from '../ui/CopyButton';
 
@@ -57,6 +58,15 @@ const TableEditor = () => {
   );
 
   const openHandler = () => setOpen(true);
+
+  const resetHandler = () => {
+    setVector([
+      ['', '', ''],
+      ['', '', ''],
+      ['', '', ''],
+    ]);
+    setForce(prev => (prev === 0 ? 1 : 0));
+  };
 
   const insertRow = () => setVector(prev => [...prev, Array(colCount).fill('')]);
 
@@ -192,6 +202,8 @@ const TableEditor = () => {
                   </Link>
                 </Button>
 
+                <ResetModal reset={resetHandler} />
+
                 <CopyButton text={vectorMarkdown} />
               </div>
             </header>
@@ -213,6 +225,7 @@ const TableEditor = () => {
                           {vector[0]?.map((_, index) => (
                             <th key={index} className='font-light border border-t-0 border-neutral'>
                               <CellInput
+                                key={force}
                                 cell={[0, index]}
                                 setVector={setVector}
                                 value={vector[0][index]}
