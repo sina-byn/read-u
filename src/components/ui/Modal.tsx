@@ -14,6 +14,7 @@ type ModalProps = {
   zIndex?: number;
   closeable?: boolean;
   className?: string;
+  backdropClassName?: string;
   children: React.ReactNode | ((closeHandler: () => void) => React.ReactNode);
 };
 
@@ -24,6 +25,7 @@ const Modal = ({
   children,
   zIndex = 50,
   closeable = true,
+  backdropClassName,
 }: ModalProps) => {
   const isClient = useClient();
 
@@ -41,7 +43,10 @@ const Modal = ({
         <div
           style={{ zIndex }}
           onClick={backdropClickHandler}
-          className='modal-backdrop flex items-center justify-center fixed inset-0 bg-black/90'
+          className={cn(
+            'modal-backdrop flex items-center justify-center fixed inset-0 bg-black/90',
+            backdropClassName
+          )}
         >
           <div className='i-container h-full flex items-center justify-center'>
             <div className={cn('modal-wrapper size-fit', className)} onClick={clickHandler}>
