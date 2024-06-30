@@ -12,6 +12,7 @@ import { cn } from '@/utils';
 // * components
 import Select from './ui/Select';
 import Button from './ui/Button';
+import CopyButton from './ui/CopyButton';
 import TableEditor from './TableEditor';
 
 // * icons
@@ -34,7 +35,7 @@ export const themes = [
 export type Theme = (typeof themes)[number];
 
 const Toolbar = () => {
-  const { view, setView, theme, setTheme } = useAppContext();
+  const { view, setView, theme, setTheme, markdown } = useAppContext();
 
   const changeHandler = (newTheme: Theme) => {
     localStorage.setItem('__gfm_theme__', newTheme);
@@ -53,14 +54,15 @@ const Toolbar = () => {
           <Suspense>
             <TableEditor />
           </Suspense>
-        </div>
-
-        <div className='right flex items-center gap-x-6'>
+          
           <Button className='new-tab-button p-0' variant='secondary'>
             <Link href='/' target='_blank' className='h-full flex items-center justify-center px-3'>
               <PictureInPicture size={22} className='shrink-0 -scale-y-100' />
             </Link>
           </Button>
+        </div>
+
+        <div className='right flex items-center gap-x-6'>
 
           <div className='view-toggle flex'>
             <Button
@@ -87,6 +89,8 @@ const Toolbar = () => {
             defaultOption={{ title: theme.replace(/-/g, ' '), value: theme }}
             options={themes.map(theme => ({ title: theme.replace(/-/g, ' '), value: theme }))}
           />
+
+          <CopyButton text={markdown} />
         </div>
       </div>
     </header>
