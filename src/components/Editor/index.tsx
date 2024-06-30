@@ -64,7 +64,7 @@ const Editor = () => {
         onMount={mountHandler}
         onChange={changeHandler}
         className='overflow-hidden'
-        options={{ fontSize: 16, wordWrap: 'on' }}
+        options={{ fontSize: 16, wordWrap: 'off' }}
       />
     </div>
   );
