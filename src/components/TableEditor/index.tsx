@@ -2,9 +2,12 @@ import Link from 'next/link';
 import { useState, useEffect, useCallback, createRef } from 'react';
 import { useSearchParams } from 'next/navigation';
 
+// * react-toastify
+import { toast } from 'react-toastify';
+
 // * utils
 import { cn, moveCursorToEnd } from '@/utils';
-import { vectorToMarkdown } from '@/utils/vector';
+import { vectorToMarkdown, markdownToVector } from '@/utils/vector';
 
 // * components
 import Modal from '../ui/Modal';
@@ -15,7 +18,7 @@ import ViewToggle from './ViewToggle';
 import CopyButton from '../ui/CopyButton';
 
 // * icons
-import { X, Plus, Table2, PictureInPicture } from 'lucide-react';
+import { X, Plus, Table2, ClipboardPaste, PictureInPicture } from 'lucide-react';
 
 // * data
 const DEFAULT_VECTOR: Vector = [
@@ -66,6 +69,28 @@ const TableEditor = () => {
       ['', '', ''],
     ]);
     setForce(prev => (prev === 0 ? 1 : 0));
+  };
+
+  const pasteHandler = () => {
+    if (!('clipboard' in navigator)) {
+      toast.error('This feature is not supported by your browser');
+      return;
+    }
+
+    navigator.clipboard
+      .readText()
+      .then(pastedText => {
+        if (!pastedText) return;
+
+        const vector = markdownToVector(pastedText);
+        if (!vector) return;
+
+        setForce(prev => (prev === 0 ? 1 : 0));
+        setVector(vector);
+      })
+      .catch(err => {
+        console.error(err);
+      });
   };
 
   const insertRow = () => setVector(prev => [...prev, Array(colCount).fill('')]);
@@ -126,13 +151,28 @@ const TableEditor = () => {
       e.key === 'Enter' && e.preventDefault();
     };
 
+    const pasteHandler = (e: ClipboardEvent) => {
+      const pastedItem = e.clipboardData?.items[0];
+      if (!pastedItem) return;
+
+      pastedItem.getAsString((pastedText: string) => {
+        const vector = markdownToVector(pastedText ?? '');
+        if (!vector) return;
+
+        setForce(prev => (prev === 0 ? 1 : 0));
+        setVector(vector);
+      });
+    };
+
     initVector();
     window.addEventListener('storage', storageSyncHandler);
     window.addEventListener('keypress', keyPressHandler);
+    window.addEventListener('paste', pasteHandler);
 
     return () => {
       window.removeEventListener('storage', storageSyncHandler);
       window.removeEventListener('keypress', keyPressHandler);
+      window.removeEventListener('paste', pasteHandler);
     };
   }, []);
 
@@ -189,9 +229,7 @@ const TableEditor = () => {
             <header className='editor-toolbar flex justify-between items-center border-b border-neutral px-3'>
               <div className='left flex items-center gap-x-6'>
                 <ViewToggle view={view} setView={setView} />
-              </div>
 
-              <div className='right flex items-center gap-x-6'>
                 <Button className='new-tab-button p-0' variant='secondary'>
                   <Link
                     target='_blank'
@@ -201,8 +239,15 @@ const TableEditor = () => {
                     <PictureInPicture size={22} className='shrink-0 -scale-y-100' />
                   </Link>
                 </Button>
+              </div>
 
+              <div className='right flex items-center gap-x-6'>
                 <ResetModal reset={resetHandler} />
+
+                <Button onClick={pasteHandler}>
+                  <ClipboardPaste />
+                  Paste
+                </Button>
 
                 <CopyButton text={vectorMarkdown} />
               </div>
