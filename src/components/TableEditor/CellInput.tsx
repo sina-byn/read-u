@@ -40,7 +40,7 @@ const CellInput = forwardRef<HTMLInputElement, CellInputProps>(
         onInput={inputHandler}
         onFocus={focusHandler}
         suppressContentEditableWarning
-        className='cell-input min-w-full w-fit focus:outline focus:outline-info whitespace-nowrap py-3 px-5'
+        className='cell-input min-w-full w-fit focus:outline focus:outline-info whitespace-nowrap py-3 px-6'
       >
         {defaultValue.current}
       </div>
