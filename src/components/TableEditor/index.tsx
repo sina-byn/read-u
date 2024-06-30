@@ -84,10 +84,21 @@ const TableEditor = () => {
       initVector();
     };
 
+    const keyPressHandler = (e: KeyboardEvent) => {
+      const el = e.target as HTMLElement;
+
+      if (!el.classList.contains('cell-input')) return;
+      e.key === 'Enter' && e.preventDefault();
+    };
+
     initVector();
     window.addEventListener('storage', storageSyncHandler);
+    window.addEventListener('keypress', keyPressHandler);
 
-    return () => window.removeEventListener('storage', storageSyncHandler);
+    return () => {
+      window.removeEventListener('storage', storageSyncHandler);
+      window.removeEventListener('keypress', keyPressHandler);
+    };
   }, []);
 
   useEffect(() => {
@@ -95,7 +106,7 @@ const TableEditor = () => {
       if (!['Delete', 'Backspace'].includes(e.key)) return;
 
       const activeElement = document.activeElement;
-      if (!activeElement || !activeElement.className.startsWith('cell-input')) return;
+      if (!activeElement || !activeElement.classList.contains('cell-input')) return;
 
       const activeInput = activeElement as HTMLDivElement;
       if (!e.shiftKey && activeInput.textContent?.length !== 0) return;
