@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { Suspense } from 'react';
 
 // * hooks
 import { useAppContext, type View } from '@/context/AppContext';
@@ -49,7 +50,9 @@ const Toolbar = () => {
     <header className='toolbar flex items-center h-fit bg-primary py-4'>
       <div className='i-container flex items-center justify-between gap-x-6'>
         <div className='left flex items-center gap-x-6'>
-          <TableEditor />
+          <Suspense>
+            <TableEditor />
+          </Suspense>
         </div>
 
         <div className='right flex items-center gap-x-6'>
