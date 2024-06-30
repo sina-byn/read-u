@@ -7,8 +7,10 @@ const RawMarkdown = () => {
   const { markdown } = useAppContext();
 
   return (
-    <div className='wrapper h-full bg-primary overflow-hidden p-8'>
-      <code className='whitespace-pre'>{markdown}</code>
+    <div className='wrapper h-full bg-primary overflow-hidden py-8 px-10'>
+      <div className='h-full overflow-auto'>
+        <code className='whitespace-pre overflow-'>{markdown}</code>
+      </div>
     </div>
   );
 };
