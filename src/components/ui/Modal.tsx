@@ -15,6 +15,7 @@ type ModalProps = {
   closeable?: boolean;
   className?: string;
   backdropClassName?: string;
+  backdropCloseable?: boolean;
   children: React.ReactNode | ((closeHandler: () => void) => React.ReactNode);
 };
 
@@ -26,6 +27,7 @@ const Modal = ({
   zIndex = 50,
   closeable = true,
   backdropClassName,
+  backdropCloseable = true,
 }: ModalProps) => {
   const isClient = useClient();
 
@@ -35,6 +37,8 @@ const Modal = ({
 
   const backdropClickHandler = (e: React.MouseEvent) => {
     e.stopPropagation();
+    if (!backdropCloseable) return;
+
     closeHandler();
   };
 
