@@ -46,7 +46,7 @@ const CopyButton = ({ text }: CopyButtonProps) => {
       ) : (
         <Clipboard size={22} className='shrink-0' />
       )}
-      <span className='font-medium capitalize -mt-0.5'>{copied ? 'copied' : 'copy'}</span>
+      <span className='capitalize -mt-0.5'>{copied ? 'copied' : 'copy'}</span>
     </Button>
   );
 };

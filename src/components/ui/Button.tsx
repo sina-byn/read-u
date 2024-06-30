@@ -12,7 +12,7 @@ type ButtonProps = {
 // * data
 const variants = {
   base: 'flex items-center justify-center gap-2 h-10 rounded-md px-3',
-  success: 'bg-success font-medium',
+  success: 'bg-success',
   secondary: 'bg-primary-light border border-neutral',
 };
 
