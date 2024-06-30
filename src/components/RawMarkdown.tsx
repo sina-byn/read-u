@@ -7,12 +7,8 @@ const RawMarkdown = () => {
   const { markdown } = useAppContext();
 
   return (
-    <div className='wrapper h-full bg-primary overflow-hidden'>
-      <textarea
-        readOnly
-        value={markdown}
-        className='resize-none size-full bg-transparent text-base md:text-lg focus:outline-none p-8'
-      />
+    <div className='wrapper h-full bg-primary overflow-hidden p-8'>
+      <code className='whitespace-pre'>{markdown}</code>
     </div>
   );
 };
