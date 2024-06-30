@@ -179,14 +179,14 @@ const TableEditor = () => {
       <Modal open={open} setOpen={setOpen} className='i-modal'>
         {closeHandler => (
           <article className='grid grid-rows-[3rem,_4rem,_1fr] size-full bg-primary border border-neutral rounded-md'>
-            <header className='flex items-center justify-between gap-x-6 h-12 border-b border-neutral px-8'>
+            <header className='flex items-center justify-between gap-x-6 h-12 border-b border-neutral px-3'>
               <span className='capitalize'>Table Editor</span>
               <button type='button' onClick={closeHandler}>
                 <X />
               </button>
             </header>
 
-            <header className='editor-toolbar flex justify-between items-center border-b border-neutral px-8'>
+            <header className='editor-toolbar flex justify-between items-center border-b border-neutral px-3'>
               <div className='left flex items-center gap-x-6'>
                 <ViewToggle view={view} setView={setView} />
               </div>
