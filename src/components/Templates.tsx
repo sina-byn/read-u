@@ -55,7 +55,7 @@ const Templates = () => {
                     return (
                       <div
                         key={t.fileName}
-                        className='template-card w-full h-fit bg-primary-dark rounded-md overflow-hidden'
+                        className='template-card w-full h-fit bg-primary-dark border border-neutral rounded-md overflow-hidden'
                       >
                         <PhotoViewer alt={t.title} src={t.screenshot} />
 
@@ -74,7 +74,10 @@ const Templates = () => {
                           {t.tags?.length && (
                             <div className='tags flex flex-wrap gap-2 text-sm capitalize mt-4'>
                               {Array.from(new Set(t.tags)).map(tag => (
-                                <div className='tag inline-flex items-center justify-center bg-success/15 text-success font-medium border border-success rounded-md pt-1 pb-2 px-2'>
+                                <div
+                                  key={tag}
+                                  className='tag inline-flex items-center justify-center bg-success/15 text-success font-medium border border-success rounded-md pt-1 pb-2 px-2'
+                                >
                                   {tag}
                                 </div>
                               ))}

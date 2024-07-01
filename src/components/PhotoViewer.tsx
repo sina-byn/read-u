@@ -14,7 +14,7 @@ const PhotoViewer = ({ alt = '', src }: PhotoViewerProps) => {
   return (
     <PhotoProvider>
       <PhotoView src={src}>
-        <figure className='relative'>
+        <figure className='relative border-b border-neutral'>
           <div className='cover grid place-items-center absolute inset-0 z-10 bg-black/50 opacity-0 hover:opacity-100 cursor-zoom-in'>
             <ZoomIn size={36} />
           </div>
