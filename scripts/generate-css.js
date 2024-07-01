@@ -51,5 +51,5 @@ const themeCSS = theme => {
 
   const output = path.join(__dirname, '..', 'src', 'app', 'gfm.css');
   fs.writeFile(output, minifiedCSS, 'utf-8');
-  console.log(chalk.greenBright(`output was successfully generated at ${output}`));
+  console.log(chalk.greenBright(`github markdown css was successfully generated at ${output}`));
 })();
