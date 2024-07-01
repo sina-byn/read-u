@@ -24,6 +24,7 @@
     "react-dom": "^18",
     "react-photo-view": "^1.2.6",
     "react-toastify": "^10.0.5",
+    "react-tooltip": "^5.27.0",
     "showdown": "^2.1.0",
     "tailwind-merge": "^2.3.0"
   },
