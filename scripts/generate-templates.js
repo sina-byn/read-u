@@ -56,7 +56,12 @@ const fmSchema = Joi.object({
       throw new Error(chalk.redBright(screenshotPath, 'no such file exists'));
     }
 
-    templates.push({ ...attributes, template, markdown: body, screenshot: screenshotPath });
+    templates.push({
+      ...attributes,
+      markdown: body,
+      fileName: template,
+      screenshot: screenshotPath,
+    });
   }
 
   const screenshots = new Set(templates.map(t => t.screenshot));
