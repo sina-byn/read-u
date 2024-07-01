@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+.react-tooltip__place-top {
+  margin-top: -0.5rem !important;
+}
+
+.react-tooltip__place-bottom {
+  margin-top: 0.5rem !important;
+}
+
 @layer base {
   body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial,

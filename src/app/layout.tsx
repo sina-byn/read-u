@@ -10,6 +10,7 @@ import EditorContextProvider from '@/context/EditorContext';
 
 // * components
 import Toolbar from '@/components/Toolbar';
+import Tooltip from '@/components/ui/Tooltip';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -31,6 +32,7 @@ export default function RootLayout({ children }: LayoutProps) {
           {children}
         </EditorContextProvider>
         <ToastContainer theme='dark' autoClose={3000} toastClassName='!bg-primary-light mr-1' />
+        <Tooltip />
         <div id='modal-root' />
       </body>
     </html>
