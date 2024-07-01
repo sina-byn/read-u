@@ -18,6 +18,7 @@ import Button from './ui/Button';
 import Templates from './Templates';
 import TableEditor from './TableEditor';
 import CopyButton from './ui/CopyButton';
+import DownloadButton from './DownloadButton';
 
 // * icons
 import { Palette, AppWindow, PictureInPicture, SquareSplitHorizontal } from 'lucide-react';
@@ -63,14 +64,6 @@ const Toolbar = () => {
             </TableEditorContextProvider>
           </Suspense>
 
-          <Button className='new-tab-button p-0' variant='secondary'>
-            <Link href='/' target='_blank' className='h-full flex items-center justify-center px-3'>
-              <PictureInPicture size={22} className='shrink-0 -scale-y-100' />
-            </Link>
-          </Button>
-        </div>
-
-        <div className='right flex items-center gap-x-6'>
           <div className='view-toggle flex'>
             <Button
               variant='secondary'
@@ -79,6 +72,7 @@ const Toolbar = () => {
             >
               <AppWindow />
             </Button>
+
             <Button
               variant='secondary'
               onClick={viewToggleHandler.bind(null, 'split')}
@@ -88,6 +82,14 @@ const Toolbar = () => {
             </Button>
           </div>
 
+          <Button className='new-tab-button p-0' variant='secondary'>
+            <Link href='/' target='_blank' className='h-full flex items-center justify-center px-3'>
+              <PictureInPicture size={22} className='shrink-0 -scale-y-100' />
+            </Link>
+          </Button>
+        </div>
+
+        <div className='right flex items-center gap-x-6'>
           <Select<Theme>
             key={theme}
             onChange={changeHandler}
@@ -98,6 +100,8 @@ const Toolbar = () => {
           />
 
           <CopyButton text={markdown} />
+
+          <DownloadButton />
         </div>
       </div>
     </header>
