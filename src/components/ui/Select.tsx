@@ -12,7 +12,7 @@ import useClickOutside from '@/hooks/useClickOutside';
 import Button from './Button';
 
 // * icons
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, Divide } from 'lucide-react';
 
 // * types
 type Option = { title: string; value: string };
@@ -22,6 +22,7 @@ type SelectProps<T> = {
   options: Option[];
   defaultOption?: Option;
   className?: string;
+  children?: React.ReactNode;
   onChange?: (value: T) => void;
 };
 
@@ -31,6 +32,7 @@ const Select = <T extends string>({
   defaultOption,
   className,
   onChange,
+  children,
 }: SelectProps<T>) => {
   const [selectedOption, setSelectedOption] = useState<Option>(defaultOption ?? options[0]);
   const [open, setOpen] = useState<boolean>(false);
@@ -59,7 +61,9 @@ const Select = <T extends string>({
         <div className='inner flex items-center gap-x-3 overflow-hidden'>
           <span className='shrink-0'>{icon}</span>
           <span className='truncate'>{selectedOption.title}</span>
+          {children && <div className='-ml-1'>{children}</div>}
         </div>
+
         <ChevronDown size={16} className='shrink-0' />
       </Button>
 
