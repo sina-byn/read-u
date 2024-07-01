@@ -9,6 +9,9 @@ import { toast } from 'react-toastify';
 import { cn, moveCursorToEnd } from '@/utils';
 import { vectorToMarkdown, markdownToVector } from '@/utils/vector';
 
+// * hooks
+import useForcedUpdate from '@/hooks/useForcedUpdate';
+
 // * components
 import Modal from '../ui/Modal';
 import Button from '../ui/Button';
@@ -38,7 +41,7 @@ type SetVector = Vector | ((oldVector: Vector) => Vector);
 
 const TableEditor = () => {
   const params = useSearchParams();
-  const [force, setForce] = useState<number>(0);
+  const [forced, forceUpdate] = useForcedUpdate();
   const [view, setView] = useState<View>('split');
   const [open, setOpen] = useState<boolean>(params.get('table_editor') === 'true' ? true : false);
 
@@ -68,7 +71,7 @@ const TableEditor = () => {
       ['', '', ''],
       ['', '', ''],
     ]);
-    setForce(prev => (prev === 0 ? 1 : 0));
+    forceUpdate();
   };
 
   const pasteHandler = () => {
@@ -85,7 +88,7 @@ const TableEditor = () => {
         const vector = markdownToVector(pastedText);
         if (!vector) return;
 
-        setForce(prev => (prev === 0 ? 1 : 0));
+        forceUpdate();
         setVector(vector);
       })
       .catch(err => {
@@ -139,7 +142,7 @@ const TableEditor = () => {
 
     const storageSyncHandler = (e: StorageEvent) => {
       if (e.storageArea !== localStorage || e.key !== '__markdown_table__') return;
-      setForce(prev => (prev === 0 ? 1 : 0));
+      forceUpdate();
 
       initVector();
     };
@@ -159,7 +162,7 @@ const TableEditor = () => {
         const vector = markdownToVector(pastedText ?? '');
         if (!vector) return;
 
-        setForce(prev => (prev === 0 ? 1 : 0));
+        forceUpdate();
         setVector(vector);
       });
     };
@@ -270,7 +273,7 @@ const TableEditor = () => {
                           {vector[0]?.map((_, index) => (
                             <th key={index} className='font-light border border-t-0 border-neutral'>
                               <CellInput
-                                key={force}
+                                key={forced}
                                 cell={[0, index]}
                                 setVector={setVector}
                                 value={vector[0][index]}
@@ -300,7 +303,7 @@ const TableEditor = () => {
                                 row.map((_, colIndex) => (
                                   <td key={colIndex} className='font-light border border-neutral'>
                                     <CellInput
-                                      key={force}
+                                      key={forced}
                                       setVector={setVector}
                                       cell={[rowIndex + 1, colIndex]}
                                       value={vector[rowIndex + 1][colIndex]}
