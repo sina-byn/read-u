@@ -82,7 +82,12 @@ const Toolbar = () => {
             </Button>
           </div>
 
-          <Button className='new-tab-button p-0' variant='secondary'>
+          <Button
+            variant='secondary'
+            className='new-tab-button p-0'
+            data-tooltip-id='tooltip'
+            data-tooltip-content='open in new tab'
+          >
             <Link href='/' target='_blank' className='h-full flex items-center justify-center px-3'>
               <PictureInPicture size={22} className='shrink-0 -scale-y-100' />
             </Link>
@@ -102,7 +107,7 @@ const Toolbar = () => {
               size={20}
               className='text-gray-400 focus:outline-none'
               data-tooltip-id='info-tooltip'
-              data-tooltip-content="markdown preview theme"
+              data-tooltip-content='markdown preview theme'
             />
           </Select>
 

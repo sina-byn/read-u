@@ -125,6 +125,8 @@ const TableEditor = () => {
                     target='_blank'
                     href='?table_editor=true'
                     className='h-full flex items-center justify-center px-3'
+                    data-tooltip-id='tooltip'
+                    data-tooltip-content='open in new tab'
                   >
                     <PictureInPicture size={22} className='shrink-0 -scale-y-100' />
                   </Link>
