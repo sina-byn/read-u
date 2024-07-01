@@ -19,14 +19,14 @@ const DownloadButton = () => {
     link.href = URL.createObjectURL(markdownBlob);
     link.download = 'README.md';
     link.click();
-    
+
     URL.revokeObjectURL(link.href);
     link.remove();
   };
 
   return (
     <Button onClick={downloadHandler} className='download-button capitalize'>
-      <Download className='shrink-0' />
+      <Download size={22} className='shrink-0' />
       download
     </Button>
   );
