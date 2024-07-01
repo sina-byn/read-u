@@ -12,8 +12,9 @@ import { cn } from '@/utils';
 // * components
 import Select from './ui/Select';
 import Button from './ui/Button';
-import CopyButton from './ui/CopyButton';
+import Templates from './Templates';
 import TableEditor from './TableEditor';
+import CopyButton from './ui/CopyButton';
 
 // * icons
 import { Palette, AppWindow, PictureInPicture, SquareSplitHorizontal } from 'lucide-react';
@@ -51,10 +52,12 @@ const Toolbar = () => {
     <header className='toolbar flex items-center h-fit bg-primary py-4'>
       <div className='i-container flex items-center justify-between gap-x-6'>
         <div className='left flex items-center gap-x-6'>
+          <Templates />
+
           <Suspense>
             <TableEditor />
           </Suspense>
-          
+
           <Button className='new-tab-button p-0' variant='secondary'>
             <Link href='/' target='_blank' className='h-full flex items-center justify-center px-3'>
               <PictureInPicture size={22} className='shrink-0 -scale-y-100' />
@@ -63,7 +66,6 @@ const Toolbar = () => {
         </div>
 
         <div className='right flex items-center gap-x-6'>
-
           <div className='view-toggle flex'>
             <Button
               variant='secondary'
