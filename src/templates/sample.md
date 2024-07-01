@@ -2,8 +2,8 @@
 title: sample template
 screenshot: sample.png
 tags:
-    - react
-    - next
+    - npm package
+    - config table
 ---
 
 # cmtu - comment utils [![NPM version](https://img.shields.io/npm/v/cmtu.svg?style=flat)](https://www.npmjs.com/package/cmtu) [![NPM monthly downloads](https://img.shields.io/npm/dm/cmtu.svg?style=flat)](https://npmjs.org/package/cmtu) [![NPM total downloads](https://img.shields.io/npm/dt/cmtu.svg?style=flat)](https://npmjs.org/package/cmtu) 
