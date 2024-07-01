@@ -21,7 +21,7 @@ import CopyButton from './ui/CopyButton';
 import DownloadButton from './DownloadButton';
 
 // * icons
-import { Palette, AppWindow, PictureInPicture, SquareSplitHorizontal } from 'lucide-react';
+import { Info, Palette, AppWindow, PictureInPicture, SquareSplitHorizontal } from 'lucide-react';
 
 // * data
 export const themes = [
@@ -97,7 +97,14 @@ const Toolbar = () => {
             icon={<Palette size={22} />}
             defaultOption={{ title: theme.replace(/-/g, ' '), value: theme }}
             options={themes.map(theme => ({ title: theme.replace(/-/g, ' '), value: theme }))}
-          />
+          >
+            <Info
+              size={20}
+              className='text-gray-400 focus:outline-none'
+              data-tooltip-id='info-tooltip'
+              data-tooltip-content="markdown preview theme"
+            />
+          </Select>
 
           <CopyButton text={markdown} />
 
