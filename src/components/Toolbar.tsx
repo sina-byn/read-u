@@ -9,6 +9,9 @@ import { useAppContext, type View } from '@/context/AppContext';
 // * utils
 import { cn } from '@/utils';
 
+// * providers
+import TableEditorContextProvider from '@/context/TableEditorContext';
+
 // * components
 import Select from './ui/Select';
 import Button from './ui/Button';
@@ -55,7 +58,9 @@ const Toolbar = () => {
           <Templates />
 
           <Suspense>
-            <TableEditor />
+            <TableEditorContextProvider>
+              <TableEditor />
+            </TableEditorContextProvider>
           </Suspense>
 
           <Button className='new-tab-button p-0' variant='secondary'>

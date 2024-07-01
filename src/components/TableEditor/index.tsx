@@ -11,6 +11,7 @@ import { vectorToMarkdown, markdownToVector } from '@/utils/vector';
 
 // * hooks
 import useForcedUpdate from '@/hooks/useForcedUpdate';
+import { useTableEditorContext } from '@/context/TableEditorContext';
 
 // * components
 import Modal from '../ui/Modal';
@@ -24,40 +25,23 @@ import CopyButton from '../ui/CopyButton';
 import { X, Plus, Table2, ClipboardPaste, PictureInPicture } from 'lucide-react';
 
 // * data
-const DEFAULT_VECTOR: Vector = [
-  ['', '', ''],
-  ['', '', ''],
-  ['', '', ''],
-];
+import { DEFAULT_VECTOR } from '@/context/TableEditorContext';
 
 // * types
-import type { View } from './ViewToggle';
-
 export type Vector = string[][];
 
 type InputVector = React.RefObject<HTMLInputElement>[][];
 
-type SetVector = Vector | ((oldVector: Vector) => Vector);
-
 const TableEditor = () => {
   const params = useSearchParams();
-  const [forced, forceUpdate] = useForcedUpdate();
-  const [view, setView] = useState<View>('split');
-  const [open, setOpen] = useState<boolean>(params.get('table_editor') === 'true' ? true : false);
 
-  const [vector, _setVector] = useState<Vector>(DEFAULT_VECTOR);
+  const [open, setOpen] = useState<boolean>(params.get('table_editor') === 'true' ? true : false);
+  const { view, setView, vector, setVector } = useTableEditorContext();
+  const [forced, forceUpdate] = useForcedUpdate();
+
   const vectorMarkdown = vectorToMarkdown(vector);
   const colCount = vector[0].length;
   const rowCount = vector.length;
-
-  const setVector = useCallback((v: SetVector) => {
-    _setVector(prev => {
-      const newVector = typeof v === 'function' ? v(prev) : v;
-      localStorage.setItem('__markdown_table__', JSON.stringify(newVector));
-
-      return newVector;
-    });
-  }, []);
 
   const inputVector: InputVector = Array.from({ length: rowCount }, () =>
     Array.from({ length: colCount }, () => createRef<HTMLInputElement>())
@@ -134,7 +118,7 @@ const TableEditor = () => {
     const initVector = () => {
       try {
         const parsedVector: Vector = JSON.parse(localStorage.getItem('__markdown_table__') ?? '');
-        _setVector(parsedVector || DEFAULT_VECTOR);
+        setVector(parsedVector || DEFAULT_VECTOR);
       } catch (err) {
         console.error(err);
       }
