@@ -10,7 +10,9 @@
     "start": "next start",
     "lint": "next lint",
     "css:generate": "node scripts/generate-css.js",
-    "template:generate": "node scripts/generate-templates.js"
+    "template:generate": "node scripts/generate-templates.js",
+    "posttemplate:generate": "npm run template:format",
+    "template:format": "biome format --write ./src/templates/templates.json"
   },
   "dependencies": {
     "@monaco-editor/react": "^4.6.0",
