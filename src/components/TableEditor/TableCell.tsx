@@ -7,13 +7,13 @@ import DOMPurify from 'isomorphic-dompurify';
 import { moveCursorToEnd } from '@/utils';
 
 // * types
-type CellInputProps = {
+type TableCellProps = {
   value: string;
   cell: [number, number];
   setVector: Dispatch<SetStateAction<string[][]>>;
 };
 
-const CellInput = forwardRef<HTMLInputElement, CellInputProps>(
+const TableCell = forwardRef<HTMLDivElement, TableCellProps>(
   ({ cell, value, setVector }, ref) => {
     const defaultValue = useRef<string>(value);
     const [row, col] = cell;
@@ -40,7 +40,7 @@ const CellInput = forwardRef<HTMLInputElement, CellInputProps>(
         onInput={inputHandler}
         onFocus={focusHandler}
         suppressContentEditableWarning
-        className='cell-input min-w-full w-fit focus:outline focus:outline-info whitespace-nowrap py-3 px-6'
+        className='table-cell min-w-full w-fit focus:outline focus:outline-info whitespace-nowrap py-3 px-6'
       >
         {defaultValue.current}
       </div>
@@ -48,6 +48,6 @@ const CellInput = forwardRef<HTMLInputElement, CellInputProps>(
   }
 );
 
-CellInput.displayName = 'CellInput';
+TableCell.displayName = 'TableCell';
 
-export default CellInput;
+export default TableCell;

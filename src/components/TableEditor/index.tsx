@@ -12,7 +12,7 @@ import { useTableEditorContext } from '@/context/TableEditorContext';
 // * components
 import Modal from '../ui/Modal';
 import Button from '../ui/Button';
-import CellInput from './CellInput';
+import TableCell from './TableCell';
 import ViewToggle from './ViewToggle';
 import PasteButton from './PasteButton';
 import CopyButton from '../ui/CopyButton';
@@ -23,7 +23,7 @@ import ConfirmationModal from './ConfirmationModal';
 import { X, Table2, PictureInPicture } from 'lucide-react';
 
 // * types
-type InputVector = React.RefObject<HTMLInputElement>[][];
+type InputVector = React.RefObject<HTMLDivElement>[][];
 
 const TableEditor = () => {
   const params = useSearchParams();
@@ -36,7 +36,7 @@ const TableEditor = () => {
   const rowCount = vector.length;
 
   const inputVector: InputVector = Array.from({ length: rowCount }, () =>
-    Array.from({ length: colCount }, () => createRef<HTMLInputElement>())
+    Array.from({ length: colCount }, () => createRef<HTMLDivElement>())
   );
 
   const openHandler = () => setOpen(true);
@@ -156,7 +156,7 @@ const TableEditor = () => {
                         <tr>
                           {vector[0]?.map((_, index) => (
                             <th key={index} className='font-light border border-t-0 border-neutral'>
-                              <CellInput
+                              <TableCell
                                 key={forced}
                                 cell={[0, index]}
                                 setVector={setVector}
@@ -186,7 +186,7 @@ const TableEditor = () => {
                               {row.length > 0 &&
                                 row.map((_, colIndex) => (
                                   <td key={colIndex} className='font-light border border-neutral'>
-                                    <CellInput
+                                    <TableCell
                                       key={forced}
                                       setVector={setVector}
                                       cell={[rowIndex + 1, colIndex]}
