@@ -40,7 +40,7 @@ const CopyButton = ({ text }: CopyButtonProps) => {
   };
 
   return (
-    <Button disabled={copied} variant='success' className='w-24 text-sm' onClick={copyHandler}>
+    <Button disabled={copied} variant='success' className='w-24' onClick={copyHandler}>
       {copied ? (
         <ClipboardCheck size={22} className='shrink-0' />
       ) : (
