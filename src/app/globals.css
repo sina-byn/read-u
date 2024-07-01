@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.react-tooltip {
+  z-index: 9999 !important;
+}
+
 #info-tooltip.react-tooltip__place-top {
   margin-top: -0.5rem !important;
 }
