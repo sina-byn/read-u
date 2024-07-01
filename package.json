@@ -29,6 +29,7 @@
     "chalk": "^4.1.2",
     "eslint": "^8",
     "eslint-config-next": "14.2.4",
+    "front-matter": "^4.0.2",
     "generate-github-markdown-css": "^6.3.0",
     "postcss": "^8",
     "sass": "^1.77.6",
