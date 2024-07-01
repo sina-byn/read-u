@@ -8,7 +8,7 @@ const converter = new Showdown.Converter();
 converter.setFlavor('github');
 
 // * types
-import type { Vector } from '@/components/TableEditor';
+import type { Vector } from '@/context/TableEditorContext';
 
 const padCellText = (text: string, colMax: number) => {
   const diff = colMax - text.length + 2;

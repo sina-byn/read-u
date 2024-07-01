@@ -23,8 +23,6 @@ import ConfirmationModal from './ConfirmationModal';
 import { X, Table2, PictureInPicture } from 'lucide-react';
 
 // * types
-export type Vector = string[][];
-
 type InputVector = React.RefObject<HTMLInputElement>[][];
 
 const TableEditor = () => {
