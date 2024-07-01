@@ -3,20 +3,22 @@ import { useState } from 'react';
 // * react-toastify
 import { toast } from 'react-toastify';
 
+// * hooks
+import { useAppContext } from '@/context/AppContext';
+
 // * utils
 import { cn } from '@/utils';
 
 // * components
 import Modal from './ui/Modal';
 import Button from './ui/Button';
+import PhotoViewer from './PhotoViewer';
 
 // * icons
 import { X, LayoutTemplate } from 'lucide-react';
 
 // * data
 import templates from '@/templates/templates.json';
-import { useAppContext } from '@/context/AppContext';
-import PhotoViewer from './PhotoViewer';
 
 const BASE_URL = 'https://github.com/sina-byn/readme-gen/blob/main/src/templates';
 
