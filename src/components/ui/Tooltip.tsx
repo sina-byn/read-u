@@ -9,7 +9,6 @@ const Tooltip = () => {
     <ReactTooltip
       noArrow
       id='info-tooltip'
-      isOpen={true}
       className='max-w-[260px] !bg-primary border border-neutral !rounded-md whitespace-pre-wrap [word-break:break-word] !opacity-100 overflow-hidden'
     />
   );
