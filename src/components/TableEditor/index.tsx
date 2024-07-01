@@ -19,9 +19,10 @@ import CellInput from './CellInput';
 import ResetModal from './ResetModal';
 import ViewToggle from './ViewToggle';
 import CopyButton from '../ui/CopyButton';
+import AppendControls from './AppendControls';
 
 // * icons
-import { X, Plus, Table2, ClipboardPaste, PictureInPicture } from 'lucide-react';
+import { X, Table2, ClipboardPaste, PictureInPicture } from 'lucide-react';
 
 // * types
 export type Vector = string[][];
@@ -73,15 +74,6 @@ const TableEditor = () => {
       .catch(err => {
         console.error(err);
       });
-  };
-
-  const insertRow = () => setVector(prev => [...prev, Array(colCount).fill('')]);
-
-  const insertCol = () => {
-    setVector(prev => {
-      const newVector = prev.map(row => [...row, '']);
-      return newVector;
-    });
   };
 
   const deleteRow = (rowIndex: number) => {
@@ -259,7 +251,7 @@ const TableEditor = () => {
                               <td key={index} data-col={index}>
                                 <Button
                                   onClick={deleteCol.bind(null, index)}
-                                  className='flex items-center justify-center w-full h-12 bg-red-600/60 hover:bg-red-600 p-3'
+                                  className='col-delete-button flex items-center justify-center w-full h-12 bg-red-600/60 hover:bg-red-600 p-3'
                                 >
                                   <X size={16} />
                                 </Button>
@@ -271,27 +263,7 @@ const TableEditor = () => {
                     </table>
                   </div>
 
-                  <div className='side flex items-center justify-center absolute right-0 inset-y-0 z-10 w-16 bg-inherit'>
-                    <Button
-                      base={false}
-                      variant='success'
-                      onClick={insertCol}
-                      className='flex justify-center items-center w-8 h-24 bg-info opacity-30 hover:opacity-100 rounded-md -mt-16'
-                    >
-                      <Plus size={18} />
-                    </Button>
-                  </div>
-
-                  <div className='bottom flex items-center justify-center absolute bottom-0 inset-x-0 z-10 h-16 bg-inherit'>
-                    <Button
-                      base={false}
-                      variant='success'
-                      onClick={insertRow}
-                      className='flex justify-center items-center w-24 h-8 bg-info opacity-30 hover:opacity-100 rounded-md -ml-16'
-                    >
-                      <Plus size={18} />
-                    </Button>
-                  </div>
+                  <AppendControls />
                 </div>
               </div>
 
