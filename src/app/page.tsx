@@ -4,7 +4,7 @@
 import { cn, extractHeadings } from '@/utils';
 
 // * hooks
-import { useAppContext } from '@/context/AppContext';
+import { useEditorContext } from '@/context/EditorContext';
 
 // * components
 import Tabs from '@/components/Tabs';
@@ -16,7 +16,7 @@ import MarkdownDisplay from '@/components/MarkdownDisplay';
 import { EditorScrollEvent } from '@/utils/events';
 
 const Home = () => {
-  const { view, markdown } = useAppContext();
+  const { view, markdown } = useEditorContext();
   const headings = extractHeadings(markdown);
 
   return (

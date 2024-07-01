@@ -10,7 +10,7 @@ import Showdown from 'showdown';
 import { cn } from '@/utils';
 
 // * hooks
-import { useAppContext } from '@/context/AppContext';
+import { useEditorContext } from '@/context/EditorContext';
 
 const converter = new Showdown.Converter();
 converter.setFlavor('github');
@@ -18,7 +18,7 @@ converter.setFlavor('github');
 import '@/app/gfm.css';
 
 const MarkdownDisplay = () => {
-  const { theme, markdown } = useAppContext();
+  const { theme, markdown } = useEditorContext();
   const HTML = converter.makeHtml(markdown);
   const sanitizedHTML = DOMPurify.sanitize(HTML);
 

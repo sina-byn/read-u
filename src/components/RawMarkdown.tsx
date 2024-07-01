@@ -1,10 +1,10 @@
 'use client';
 
 // * hooks
-import { useAppContext } from '@/context/AppContext';
+import { useEditorContext } from '@/context/EditorContext';
 
 const RawMarkdown = () => {
-  const { markdown } = useAppContext();
+  const { markdown } = useEditorContext();
 
   return (
     <div className='wrapper h-full bg-primary overflow-hidden py-8 px-10'>

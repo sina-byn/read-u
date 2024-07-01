@@ -10,7 +10,7 @@ import {
 } from 'react';
 
 // * context
-const appContext = createContext<AppContext | null>(null);
+const editorContext = createContext<EditorContext | null>(null);
 
 // * data
 import { themes, type Theme } from '@/components/Toolbar';
@@ -20,7 +20,7 @@ export type View = 'tabs' | 'split';
 
 type ProviderProps = { children: React.ReactNode };
 
-type AppContext = {
+type EditorContext = {
   view: View;
   setView: Dispatch<SetStateAction<View>>;
   theme: Theme;
@@ -29,7 +29,7 @@ type AppContext = {
   setMarkdown: Dispatch<SetStateAction<string>>;
 };
 
-const AppContextProvider = ({ children }: ProviderProps) => {
+const EditorContextProvider = ({ children }: ProviderProps) => {
   const [view, setView] = useState<View>('split');
   const [theme, setTheme] = useState<Theme>('dark');
   const [markdown, setMarkdown] = useState<string>('');
@@ -55,9 +55,9 @@ const AppContextProvider = ({ children }: ProviderProps) => {
     return () => window.removeEventListener('storage', storageSyncHandler);
   }, []);
 
-  return <appContext.Provider value={context}>{children}</appContext.Provider>;
+  return <editorContext.Provider value={context}>{children}</editorContext.Provider>;
 };
 
-export const useAppContext = () => useContext(appContext)!;
+export const useEditorContext = () => useContext(editorContext)!;
 
-export default AppContextProvider;
+export default EditorContextProvider;

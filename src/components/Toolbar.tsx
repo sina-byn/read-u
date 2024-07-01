@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { Suspense } from 'react';
 
 // * hooks
-import { useAppContext, type View } from '@/context/AppContext';
+import { useEditorContext, type View } from '@/context/EditorContext';
 
 // * utils
 import { cn } from '@/utils';
@@ -39,7 +39,7 @@ export const themes = [
 export type Theme = (typeof themes)[number];
 
 const Toolbar = () => {
-  const { view, setView, theme, setTheme, markdown } = useAppContext();
+  const { view, setView, theme, setTheme, markdown } = useEditorContext();
 
   const changeHandler = (newTheme: Theme) => {
     localStorage.setItem('__gfm_theme__', newTheme);

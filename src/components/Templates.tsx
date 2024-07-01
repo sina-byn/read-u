@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { toast } from 'react-toastify';
 
 // * hooks
-import { useAppContext } from '@/context/AppContext';
+import { useEditorContext } from '@/context/EditorContext';
 
 // * utils
 import { cn } from '@/utils';
@@ -24,7 +24,7 @@ const BASE_URL = 'https://github.com/sina-byn/readme-gen/blob/main/src/templates
 
 const Templates = () => {
   const [open, setOpen] = useState<boolean>(false);
-  const { setMarkdown } = useAppContext();
+  const { setMarkdown } = useEditorContext();
 
   return (
     <>

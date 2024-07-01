@@ -6,7 +6,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 // * providers
-import AppContextProvider from '@/context/AppContext';
+import EditorContextProvider from '@/context/EditorContext';
 
 // * components
 import Toolbar from '@/components/Toolbar';
@@ -23,13 +23,13 @@ export default function RootLayout({ children }: LayoutProps) {
   return (
     <html lang='en'>
       <body className='h-svh bg-primary-dark text-gray-200'>
-        <AppContextProvider>
+        <EditorContextProvider>
           <header className='h-16'>
             <div className='i-container flex items-center justify-center h-full'></div>
           </header>
           <Toolbar />
           {children}
-        </AppContextProvider>
+        </EditorContextProvider>
         <ToastContainer theme='dark' autoClose={3000} toastClassName='!bg-primary-light mr-1' />
         <div id='modal-root' />
       </body>

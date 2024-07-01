@@ -9,7 +9,7 @@ import MonacoEditor, { type Monaco } from '@monaco-editor/react';
 import githubDark from './theme.json';
 
 // * hooks
-import { useAppContext } from '@/context/AppContext';
+import { useEditorContext } from '@/context/EditorContext';
 
 // * components
 import Loader from './Loader';
@@ -18,7 +18,7 @@ import Loader from './Loader';
 import { EditorScrollEvent } from '@/utils/events';
 
 const Editor = () => {
-  const { markdown, setMarkdown } = useAppContext();
+  const { markdown, setMarkdown } = useEditorContext();
   const editorRef = useRef<unknown>(null);
 
   const changeHandler = (newMarkdown?: string) => {
