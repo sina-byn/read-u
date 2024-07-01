@@ -40,6 +40,8 @@ const FullscreenButton = forwardRef<HTMLElement>((_, ref) => {
       variant='secondary'
       onClick={fullscreenHandler}
       disabled={!isFullscreenSupported}
+      data-tooltip-id='tooltip'
+      data-tooltip-content='fullscreen'
       className='hover:bg-primary [&:disabled_*]:opacity-50 border-b-0 rounded-b-none rounded-r-none'
     >
       <Fullscreen size={22} />
