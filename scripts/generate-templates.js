@@ -22,14 +22,12 @@ const fmSchema = Joi.object({
 
   if (!fs.existsSync(templatesPath)) {
     console.log(chalk.yellowBright('no templates were found'));
-    return;
   }
 
   const templateFiles = fs.readdirSync(templatesPath).filter(f => path.extname(f) === '.md');
 
   if (templateFiles.length === 0) {
     console.log(chalk.yellowBright('no templates were found'));
-    return;
   }
 
   for (const template of templateFiles) {
