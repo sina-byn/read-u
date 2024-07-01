@@ -69,6 +69,8 @@ const Toolbar = () => {
               variant='secondary'
               onClick={viewToggleHandler.bind(null, 'tabs')}
               className={cn('rounded-r-none border-r-0', view === 'tabs' && 'bg-primary-dark')}
+              data-tooltip-id='tooltip'
+              data-tooltip-content='tabs view'
             >
               <AppWindow />
             </Button>
@@ -77,6 +79,8 @@ const Toolbar = () => {
               variant='secondary'
               onClick={viewToggleHandler.bind(null, 'split')}
               className={cn('rounded-l-none', view === 'split' && 'bg-primary-dark')}
+              data-tooltip-id='tooltip'
+              data-tooltip-content='split view'
             >
               <SquareSplitHorizontal />
             </Button>
