@@ -3,11 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "predev": "npm run css:generate && npm run template:generate",
     "dev": "next dev",
+    "prebuild": "npm run css:generate && npm run template:generate",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "css:generate": "node scripts/generate-css.js"
+    "css:generate": "node scripts/generate-css.js",
+    "template:generate": "node scripts/generate-templates.js"
   },
   "dependencies": {
     "@monaco-editor/react": "^4.6.0",
