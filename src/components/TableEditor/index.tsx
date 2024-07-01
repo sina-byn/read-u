@@ -2,12 +2,9 @@ import Link from 'next/link';
 import { useState, useEffect, createRef } from 'react';
 import { useSearchParams } from 'next/navigation';
 
-// * react-toastify
-import { toast } from 'react-toastify';
-
 // * utils
 import { cn, moveCursorToEnd } from '@/utils';
-import { vectorToMarkdown, markdownToVector } from '@/utils/vector';
+import { vectorToMarkdown } from '@/utils/vector';
 
 // * hooks
 import { useTableEditorContext } from '@/context/TableEditorContext';
@@ -17,12 +14,13 @@ import Modal from '../ui/Modal';
 import Button from '../ui/Button';
 import CellInput from './CellInput';
 import ViewToggle from './ViewToggle';
+import PasteButton from './PasteButton';
 import CopyButton from '../ui/CopyButton';
 import AppendControls from './AppendControls';
 import ConfirmationModal from './ConfirmationModal';
 
 // * icons
-import { X, Table2, ClipboardPaste, PictureInPicture } from 'lucide-react';
+import { X, Table2, PictureInPicture } from 'lucide-react';
 
 // * types
 export type Vector = string[][];
@@ -33,7 +31,7 @@ const TableEditor = () => {
   const params = useSearchParams();
 
   const [open, setOpen] = useState<boolean>(params.get('table_editor') === 'true' ? true : false);
-  const { view, setView, vector, setVector, forced, forceUpdate } = useTableEditorContext();
+  const { view, setView, vector, setVector, forced } = useTableEditorContext();
 
   const vectorMarkdown = vectorToMarkdown(vector);
   const colCount = vector[0].length;
@@ -44,28 +42,6 @@ const TableEditor = () => {
   );
 
   const openHandler = () => setOpen(true);
-
-  const pasteHandler = () => {
-    if (!('clipboard' in navigator)) {
-      toast.error('This feature is not supported by your browser');
-      return;
-    }
-
-    navigator.clipboard
-      .readText()
-      .then(pastedText => {
-        if (!pastedText) return;
-
-        const vector = markdownToVector(pastedText);
-        if (!vector) return;
-
-        forceUpdate();
-        setVector(vector);
-      })
-      .catch(err => {
-        console.error(err);
-      });
-  };
 
   const deleteRow = (rowIndex: number) => {
     setVector(prev => {
@@ -160,10 +136,7 @@ const TableEditor = () => {
               <div className='right flex items-center gap-x-6'>
                 <ConfirmationModal />
 
-                <Button onClick={pasteHandler}>
-                  <ClipboardPaste />
-                  Paste
-                </Button>
+                <PasteButton />
 
                 <CopyButton text={vectorMarkdown} />
               </div>
