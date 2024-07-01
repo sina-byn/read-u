@@ -18,7 +18,7 @@ import templates from '@/templates/templates.json';
 import { useAppContext } from '@/context/AppContext';
 import PhotoViewer from './PhotoViewer';
 
-const BASE_URL = 'https://github.com/sina-byn/readme-gen/blob/main/src';
+const BASE_URL = 'https://github.com/sina-byn/readme-gen/blob/main/src/templates';
 
 const Templates = () => {
   const { setMarkdown } = useAppContext();
@@ -65,7 +65,7 @@ const Templates = () => {
                           <a
                             target='_blank'
                             rel='noopener noreferrer'
-                            href={`${BASE_URL}/templates/${t.fileName}`}
+                            href={`${BASE_URL}/${t.fileName}`}
                             className='source text-success text-sm font-medium underline'
                           >
                             source
