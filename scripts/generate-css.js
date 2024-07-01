@@ -27,7 +27,7 @@ const themeCSS = theme => {
     ''
   );
 
-  if (!CSS) throw new Error('failed fetching github markdown css');
+  if (!CSS) throw new Error(chalk.redBright('failed fetching github markdown css'));
 
   const { css: compiledCSS } = sass.compileString(CSS, { style: 'compressed' });
   const query = querystring.stringify({ input: compiledCSS });
