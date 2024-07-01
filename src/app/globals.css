@@ -2,11 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-.react-tooltip__place-top {
+#info-tooltip.react-tooltip__place-top {
   margin-top: -0.5rem !important;
 }
 
-.react-tooltip__place-bottom {
+#info-tooltip.react-tooltip__place-bottom {
   margin-top: 0.5rem !important;
 }
 
