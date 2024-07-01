@@ -50,7 +50,7 @@ const fmSchema = Joi.object({
       );
     }
 
-    const screenshotPath = path.join('src', 'templates', 'screenshots', screenshot);
+    const screenshotPath = path.join('public', 'screenshots', screenshot);
 
     if (!fs.existsSync(screenshotPath)) {
       throw new Error(chalk.redBright(screenshotPath, 'no such file exists'));
@@ -60,7 +60,7 @@ const fmSchema = Joi.object({
       ...attributes,
       markdown: body,
       fileName: template,
-      screenshot: screenshotPath,
+      screenshot: `/screenshots/${screenshot}`,
     });
   }
 
