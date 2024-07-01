@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { useState, useEffect, useCallback, createRef } from 'react';
+import { useState, useEffect, createRef } from 'react';
 import { useSearchParams } from 'next/navigation';
 
 // * react-toastify
@@ -10,7 +10,6 @@ import { cn, moveCursorToEnd } from '@/utils';
 import { vectorToMarkdown, markdownToVector } from '@/utils/vector';
 
 // * hooks
-import useForcedUpdate from '@/hooks/useForcedUpdate';
 import { useTableEditorContext } from '@/context/TableEditorContext';
 
 // * components
@@ -24,9 +23,6 @@ import CopyButton from '../ui/CopyButton';
 // * icons
 import { X, Plus, Table2, ClipboardPaste, PictureInPicture } from 'lucide-react';
 
-// * data
-import { DEFAULT_VECTOR } from '@/context/TableEditorContext';
-
 // * types
 export type Vector = string[][];
 
@@ -36,8 +32,7 @@ const TableEditor = () => {
   const params = useSearchParams();
 
   const [open, setOpen] = useState<boolean>(params.get('table_editor') === 'true' ? true : false);
-  const { view, setView, vector, setVector } = useTableEditorContext();
-  const [forced, forceUpdate] = useForcedUpdate();
+  const { view, setView, vector, setVector, forced, forceUpdate } = useTableEditorContext();
 
   const vectorMarkdown = vectorToMarkdown(vector);
   const colCount = vector[0].length;
@@ -113,55 +108,6 @@ const TableEditor = () => {
       return newVector;
     });
   };
-
-  useEffect(() => {
-    const initVector = () => {
-      try {
-        const parsedVector: Vector = JSON.parse(localStorage.getItem('__markdown_table__') ?? '');
-        setVector(parsedVector || DEFAULT_VECTOR);
-      } catch (err) {
-        console.error(err);
-      }
-    };
-
-    const storageSyncHandler = (e: StorageEvent) => {
-      if (e.storageArea !== localStorage || e.key !== '__markdown_table__') return;
-      forceUpdate();
-
-      initVector();
-    };
-
-    const keyPressHandler = (e: KeyboardEvent) => {
-      const el = e.target as HTMLElement;
-
-      if (!el.classList.contains('cell-input')) return;
-      e.key === 'Enter' && e.preventDefault();
-    };
-
-    const pasteHandler = (e: ClipboardEvent) => {
-      const pastedItem = e.clipboardData?.items[0];
-      if (!pastedItem) return;
-
-      pastedItem.getAsString((pastedText: string) => {
-        const vector = markdownToVector(pastedText ?? '');
-        if (!vector) return;
-
-        forceUpdate();
-        setVector(vector);
-      });
-    };
-
-    initVector();
-    window.addEventListener('storage', storageSyncHandler);
-    window.addEventListener('keypress', keyPressHandler);
-    window.addEventListener('paste', pasteHandler);
-
-    return () => {
-      window.removeEventListener('storage', storageSyncHandler);
-      window.removeEventListener('keypress', keyPressHandler);
-      window.removeEventListener('paste', pasteHandler);
-    };
-  }, []);
 
   useEffect(() => {
     const keyDownHandler = (e: KeyboardEvent) => {
