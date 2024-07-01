@@ -21,8 +21,8 @@ import PhotoViewer from './PhotoViewer';
 const BASE_URL = 'https://github.com/sina-byn/readme-gen/blob/main/src/templates';
 
 const Templates = () => {
+  const [open, setOpen] = useState<boolean>(false);
   const { setMarkdown } = useAppContext();
-  const [open, setOpen] = useState<boolean>(true);
 
   return (
     <>
