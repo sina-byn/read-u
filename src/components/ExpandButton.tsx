@@ -15,11 +15,17 @@ const ExpandButton = ({ title, children }: ExpandButtonProps) => {
   const toggleHandler = () => setOpen(prev => !prev);
 
   return (
-    <Button
-      variant='secondary'
-      onClick={toggleHandler}
-      className='hover:bg-primary border-b-0 border-l-0 rounded-b-none rounded-l-none'
-    >
+    <>
+      <Button
+        variant='secondary'
+        onClick={toggleHandler}
+        data-tooltip-id='tooltip'
+        data-tooltip-content='expand panel'
+        className='hover:bg-primary border-b-0 border-l-0 rounded-b-none rounded-l-none'
+      >
+        <Expand size={22} />
+      </Button>
+
       <Modal open={open} setOpen={setOpen} className='i-modal'>
         {closeHandler => (
           <article className='grid grid-rows-[3rem,_1fr] size-full bg-primary border border-neutral rounded-md'>
@@ -33,8 +39,7 @@ const ExpandButton = ({ title, children }: ExpandButtonProps) => {
           </article>
         )}
       </Modal>
-      <Expand size={22} />
-    </Button>
+    </>
   );
 };
 
