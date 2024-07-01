@@ -1,5 +1,8 @@
 import { useState } from 'react';
 
+// * hooks
+import { useTableEditorContext } from '@/context/TableEditorContext';
+
 // * components
 import Modal from '../ui/Modal';
 import Button from '../ui/Button';
@@ -7,10 +10,8 @@ import Button from '../ui/Button';
 // * icons
 import { Trash } from 'lucide-react';
 
-// * types
-type ResetModalProps = { reset: Function };
-
-const ResetModal = ({ reset }: ResetModalProps) => {
+const ConfirmationModal = () => {
+  const { setVector, forceUpdate } = useTableEditorContext();
   const [open, setOpen] = useState<boolean>(false);
 
   return (
@@ -29,7 +30,12 @@ const ResetModal = ({ reset }: ResetModalProps) => {
       >
         {closeHandler => {
           const resetHandler = () => {
-            reset();
+            setVector([
+              ['', '', ''],
+              ['', '', ''],
+              ['', '', ''],
+            ]);
+            forceUpdate();
             closeHandler();
           };
 
@@ -53,4 +59,4 @@ const ResetModal = ({ reset }: ResetModalProps) => {
   );
 };
 
-export default ResetModal;
+export default ConfirmationModal;

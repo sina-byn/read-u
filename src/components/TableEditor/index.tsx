@@ -16,10 +16,10 @@ import { useTableEditorContext } from '@/context/TableEditorContext';
 import Modal from '../ui/Modal';
 import Button from '../ui/Button';
 import CellInput from './CellInput';
-import ResetModal from './ResetModal';
 import ViewToggle from './ViewToggle';
 import CopyButton from '../ui/CopyButton';
 import AppendControls from './AppendControls';
+import ConfirmationModal from './ConfirmationModal';
 
 // * icons
 import { X, Table2, ClipboardPaste, PictureInPicture } from 'lucide-react';
@@ -44,15 +44,6 @@ const TableEditor = () => {
   );
 
   const openHandler = () => setOpen(true);
-
-  const resetHandler = () => {
-    setVector([
-      ['', '', ''],
-      ['', '', ''],
-      ['', '', ''],
-    ]);
-    forceUpdate();
-  };
 
   const pasteHandler = () => {
     if (!('clipboard' in navigator)) {
@@ -167,7 +158,7 @@ const TableEditor = () => {
               </div>
 
               <div className='right flex items-center gap-x-6'>
-                <ResetModal reset={resetHandler} />
+                <ConfirmationModal />
 
                 <Button onClick={pasteHandler}>
                   <ClipboardPaste />
