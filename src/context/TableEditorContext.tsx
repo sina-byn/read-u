@@ -91,6 +91,8 @@ const TableEditorContextProvider = ({ children }: ProviderProps) => {
 
       return newVector;
     });
+
+    forceUpdate();
   };
 
   const deleteRow = (rowIndex: number) => {
@@ -101,6 +103,8 @@ const TableEditorContextProvider = ({ children }: ProviderProps) => {
       newVector.splice(rowIndex, 1);
       return newVector;
     });
+
+    forceUpdate();
   };
 
   useEffect(() => {
