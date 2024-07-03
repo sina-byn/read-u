@@ -26,12 +26,12 @@ const ShortcutsTooltip = () => {
           <ul className='space-y-1'>
             <li className='flex gap-x-1'>
               <span>-</span>
-              <span>remove focused cell's row</span>
+              <span>remove focused cell&apos;s row</span>
             </li>
 
             <li className='flex gap-x-1'>
               <span>-</span>
-              <span>doesn't work if no cell is focused</span>
+              <span>doesn&apos;t work if no cell is focused</span>
             </li>
           </ul>
         </div>
@@ -41,12 +41,12 @@ const ShortcutsTooltip = () => {
           <ul className='space-y-1'>
             <li className='flex gap-x-1'>
               <span>-</span>
-              <span>remove focused cell's column</span>
+              <span>remove focused cell&apos;s column</span>
             </li>
 
             <li className='flex gap-x-1'>
               <span>-</span>
-              <span>doesn't work if no cell is focused</span>
+              <span>doesn&apos;t work if no cell is focused</span>
             </li>
           </ul>
         </div>
