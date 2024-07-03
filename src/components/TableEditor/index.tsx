@@ -42,6 +42,45 @@ const TableEditor = () => {
 
   useEffect(() => {
     const keyDownHandler = (e: KeyboardEvent) => {
+      if (e.altKey) {
+        const key = e.key.toLowerCase();
+
+        if (e.shiftKey) {
+          if (!document.activeElement?.classList.contains('table-cell')) return;
+          const activeInput = document.activeElement as HTMLElement;
+
+          switch (key) {
+            case 'c':
+              const colIndex = +activeInput.dataset.col!;
+              deleteRow(colIndex);
+              break;
+
+            case 'r':
+              const rowIndex = +activeInput.dataset.row!;
+              deleteRow(rowIndex);
+          }
+
+          return;
+        }
+
+        switch (key) {
+          case 'c':
+            setVector(prev => {
+              const newVector = prev.map(row => [...row, '']);
+              return newVector;
+            });
+            break;
+
+          case 'r':
+            setVector(prev => {
+              const colCount = prev[0].length;
+              return [...prev, Array(colCount).fill('')];
+            });
+        }
+
+        return;
+      }
+
       if (!['Delete', 'Backspace'].includes(e.key)) return;
 
       const activeElement = document.activeElement;
