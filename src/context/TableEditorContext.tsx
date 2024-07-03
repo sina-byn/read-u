@@ -38,6 +38,12 @@ type TableEditorContext = {
   setView: Dispatch<SetStateAction<View>>;
   vector: Vector;
   setVector: (v: SetVector) => void;
+  colCount: number;
+  rowCount: number;
+  appendCol: () => void;
+  appendRow: () => void;
+  deleteCol: (colIndex: number) => void;
+  deleteRow: (rowIndex: number) => void;
   forced: number;
   forceUpdate: Function;
 };
@@ -46,6 +52,8 @@ const TableEditorContextProvider = ({ children }: ProviderProps) => {
   const [vector, _setVector] = useState<Vector>(DEFAULT_VECTOR);
   const [view, setView] = useState<View>('split');
   const [forced, forceUpdate] = useForcedUpdate();
+  const colCount = vector[0].length;
+  const rowCount = vector.length;
 
   const setVector = useCallback((v: SetVector) => {
     _setVector(prev => {
@@ -55,6 +63,45 @@ const TableEditorContextProvider = ({ children }: ProviderProps) => {
       return newVector;
     });
   }, []);
+
+  const appendRow = () => {
+    setVector(prev => {
+      const colCount = prev[0].length;
+      return [...prev, Array(colCount).fill('')];
+    });
+  };
+
+  const appendCol = () => {
+    setVector(prev => {
+      const newVector = prev.map(row => [...row, '']);
+      return newVector;
+    });
+  };
+
+  const deleteCol = (colIndex: number) => {
+    setVector(prev => {
+      if (colCount === 1) return prev;
+
+      const newVector = prev.map(row => {
+        const newRow = row.slice();
+        newRow.splice(colIndex, 1);
+
+        return newRow;
+      });
+
+      return newVector;
+    });
+  };
+
+  const deleteRow = (rowIndex: number) => {
+    setVector(prev => {
+      if (rowCount === 1) return prev;
+
+      const newVector = prev.slice();
+      newVector.splice(rowIndex, 1);
+      return newVector;
+    });
+  };
 
   useEffect(() => {
     const initVector = () => {
@@ -105,7 +152,20 @@ const TableEditorContextProvider = ({ children }: ProviderProps) => {
     };
   }, []);
 
-  const context = { view, setView, vector, setVector, forced, forceUpdate };
+  const context = {
+    view,
+    setView,
+    vector,
+    setVector,
+    colCount,
+    rowCount,
+    appendCol,
+    appendRow,
+    deleteCol,
+    deleteRow,
+    forced,
+    forceUpdate,
+  };
 
   return <tableEditorContext.Provider value={context}>{children}</tableEditorContext.Provider>;
 };

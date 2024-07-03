@@ -28,43 +28,17 @@ type InputVector = React.RefObject<HTMLDivElement>[][];
 const TableEditor = () => {
   const params = useSearchParams();
 
+  // prettier-ignore
+  const { view, setView, vector, setVector, colCount, rowCount, deleteCol, deleteRow, forced } = useTableEditorContext();
   const [open, setOpen] = useState<boolean>(params.get('table_editor') === 'true' ? true : false);
-  const { view, setView, vector, setVector, forced } = useTableEditorContext();
 
   const vectorMarkdown = vectorToMarkdown(vector);
-  const colCount = vector[0].length;
-  const rowCount = vector.length;
 
   const inputVector: InputVector = Array.from({ length: rowCount }, () =>
     Array.from({ length: colCount }, () => createRef<HTMLDivElement>())
   );
 
   const openHandler = () => setOpen(true);
-
-  const deleteRow = (rowIndex: number) => {
-    setVector(prev => {
-      if (rowCount === 1) return prev;
-
-      const newVector = prev.slice();
-      newVector.splice(rowIndex, 1);
-      return newVector;
-    });
-  };
-
-  const deleteCol = (colIndex: number) => {
-    setVector(prev => {
-      if (colCount === 1) return prev;
-
-      const newVector = prev.map(row => {
-        const newRow = row.slice();
-        newRow.splice(colIndex, 1);
-
-        return newRow;
-      });
-
-      return newVector;
-    });
-  };
 
   useEffect(() => {
     const keyDownHandler = (e: KeyboardEvent) => {

@@ -8,21 +8,7 @@ import Button from '../ui/Button';
 import { Plus } from 'lucide-react';
 
 const AppendControls = () => {
-  const { setVector } = useTableEditorContext();
-
-  const insertRow = () => {
-    setVector(prev => {
-      const colCount = prev[0].length;
-      return [...prev, Array(colCount).fill('')];
-    });
-  };
-
-  const insertCol = () => {
-    setVector(prev => {
-      const newVector = prev.map(row => [...row, '']);
-      return newVector;
-    });
-  };
+  const { appendCol, appendRow } = useTableEditorContext();
 
   return (
     <>
@@ -30,7 +16,7 @@ const AppendControls = () => {
         <Button
           base={false}
           variant='success'
-          onClick={insertCol}
+          onClick={appendCol}
           className='flex justify-center items-center w-8 h-24 bg-info opacity-30 hover:opacity-100 rounded-md -mt-16'
         >
           <Plus size={18} />
@@ -41,7 +27,7 @@ const AppendControls = () => {
         <Button
           base={false}
           variant='success'
-          onClick={insertRow}
+          onClick={appendRow}
           className='flex justify-center items-center w-24 h-8 bg-info opacity-30 hover:opacity-100 rounded-md -ml-16'
         >
           <Plus size={18} />
