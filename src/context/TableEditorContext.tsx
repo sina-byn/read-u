@@ -123,7 +123,7 @@ const TableEditorContextProvider = ({ children }: ProviderProps) => {
     const keyPressHandler = (e: KeyboardEvent) => {
       const el = e.target as HTMLElement;
 
-      if (!el.classList.contains('cell-input')) return;
+      if (!el.classList.contains('table-cell')) return;
       e.key === 'Enter' && e.preventDefault();
     };
 

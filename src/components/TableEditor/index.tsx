@@ -45,7 +45,7 @@ const TableEditor = () => {
       if (!['Delete', 'Backspace'].includes(e.key)) return;
 
       const activeElement = document.activeElement;
-      if (!activeElement || !activeElement.classList.contains('cell-input')) return;
+      if (!activeElement || !activeElement.classList.contains('table-cell')) return;
 
       const activeInput = activeElement as HTMLDivElement;
       if (!e.shiftKey && activeInput.textContent?.length !== 0) return;
