@@ -19,6 +19,10 @@
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial,
       sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
   }
+
+  kbd {
+    @apply inline-block bg-primary-light border border-neutral rounded-md py-1 px-2;
+  }
 }
 
 @layer components {
@@ -28,5 +32,9 @@
 
   .i-modal {
     @apply !w-full !h-[calc(100%_-_32px)] md:!h-[calc(100%_-_48px)];
+  }
+
+  .i-shortcut {
+    @apply flex flex-wrap items-center gap-2 border-b last:border-b-0 border-neutral p-2;
   }
 }

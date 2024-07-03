@@ -17,6 +17,7 @@ import ViewToggle from './ViewToggle';
 import PasteButton from './PasteButton';
 import CopyButton from '../ui/CopyButton';
 import AppendControls from './AppendControls';
+import ShortcutsTooltip from './ShortcutsTooltip';
 import ConfirmationModal from './ConfirmationModal';
 
 // * icons
@@ -123,7 +124,11 @@ const TableEditor = () => {
         {closeHandler => (
           <article className='grid grid-rows-[3rem,_4rem,_1fr] size-full bg-primary border border-neutral rounded-md'>
             <header className='flex items-center justify-between gap-x-6 h-12 border-b border-neutral px-3'>
-              <span className='capitalize'>Table Editor</span>
+              <div className='flex items-center gap-x-2'>
+                <span className='capitalize'>Table Editor</span>
+                <ShortcutsTooltip />
+              </div>
+
               <button type='button' onClick={closeHandler}>
                 <X />
               </button>
