@@ -78,7 +78,7 @@ const Templates = () => {
                               {Array.from(new Set(t.tags)).map(tag => (
                                 <div
                                   key={tag}
-                                  className='tag inline-flex items-center justify-center bg-success/15 text-success font-medium border border-success rounded-md pt-1 pb-2 px-2'
+                                  className='tag inline-flex items-center justify-center bg-success/15 text-success font-medium border border-success rounded-md pt-1 pb-1.5 px-2'
                                 >
                                   {tag}
                                 </div>
