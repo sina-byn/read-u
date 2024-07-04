@@ -103,8 +103,8 @@ const Templates = () => {
                         <a
                           target='_blank'
                           rel='noopener noreferrer nofollow'
-                          href='https://github.com/sina-byn/read-u'
                           className='text-info underline ml-1'
+                          href='https://github.com/sina-byn/read-u/blob/main/CONTRIBUTING.md'
                         >
                           here
                         </a>
