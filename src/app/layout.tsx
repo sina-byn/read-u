@@ -26,11 +26,33 @@ export default function RootLayout({ children }: LayoutProps) {
       <body className='h-svh bg-primary-dark text-gray-200'>
         <EditorContextProvider>
           <header className='h-16'>
-            <div className='i-container flex items-center justify-center h-full'></div>
+            <div className='i-container flex items-center justify-between h-full'>
+              <h1 className='text-lg font-bold font-[consolas]'>READ-U.md</h1>
+
+              <div className='links flex items-center gap-x-4'>
+                <a
+                  target='_blank'
+                  rel='noopener noreferrer nofollow'
+                  href='https://www.linkedin.com/in/sina-bayandorian/'
+                >
+                  <img src='/icons/linkedin.svg' className='size-6' />
+                </a>
+
+                <a
+                  target='_blank'
+                  rel='noopener noreferrer nofollow'
+                  href='https://github.com/sina-byn'
+                >
+                  <img src='/icons/github.svg' className='size-6' />
+                </a>
+              </div>
+            </div>
           </header>
+
           <Toolbar />
           {children}
         </EditorContextProvider>
+
         <ToastContainer theme='dark' autoClose={3000} toastClassName='!bg-primary-light mr-1' />
         <Tooltip />
         <div id='modal-root' />
