@@ -3,6 +3,9 @@ import { useState } from 'react';
 // * react-toastify
 import { toast } from 'react-toastify';
 
+// * utils
+import { cn } from '@/utils';
+
 // * components
 import Button from './Button';
 
@@ -10,9 +13,9 @@ import Button from './Button';
 import { Clipboard, ClipboardCheck } from 'lucide-react';
 
 // * types
-type CopyButtonProps = { text: string };
+type CopyButtonProps = { text: string; className?: string };
 
-const CopyButton = ({ text }: CopyButtonProps) => {
+const CopyButton = ({ text, className }: CopyButtonProps) => {
   const [copied, setCopied] = useState<boolean>(false);
 
   const copyHandler = () => {
@@ -40,7 +43,12 @@ const CopyButton = ({ text }: CopyButtonProps) => {
   };
 
   return (
-    <Button disabled={copied} variant='success' className='w-24' onClick={copyHandler}>
+    <Button
+      disabled={copied}
+      variant='success'
+      onClick={copyHandler}
+      className={cn('w-24', className)}
+    >
       {copied ? (
         <ClipboardCheck size={22} className='shrink-0' />
       ) : (
