@@ -29,9 +29,20 @@ type InputVector = React.RefObject<HTMLDivElement>[][];
 const TableEditor = () => {
   const params = useSearchParams();
 
-  // prettier-ignore
-  const { view, setView, vector, setVector, colCount, rowCount, deleteCol, deleteRow, forced } = useTableEditorContext();
   const [open, setOpen] = useState<boolean>(params.get('table_editor') === 'true' ? true : false);
+  const {
+    view,
+    setView,
+    vector,
+    setVector,
+    colCount,
+    rowCount,
+    appendCol,
+    appendRow,
+    deleteCol,
+    deleteRow,
+    forced,
+  } = useTableEditorContext();
 
   const vectorMarkdown = vectorToMarkdown(vector);
 
@@ -66,17 +77,11 @@ const TableEditor = () => {
 
         switch (key) {
           case 'c':
-            setVector(prev => {
-              const newVector = prev.map(row => [...row, '']);
-              return newVector;
-            });
+            appendCol();
             break;
 
           case 'r':
-            setVector(prev => {
-              const colCount = prev[0].length;
-              return [...prev, Array(colCount).fill('')];
-            });
+            appendRow();
         }
 
         return;
