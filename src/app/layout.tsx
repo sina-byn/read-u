@@ -41,7 +41,7 @@ export default function RootLayout({ children }: LayoutProps) {
                 <a
                   target='_blank'
                   rel='noopener noreferrer nofollow'
-                  href='https://github.com/sina-byn'
+                  href='https://github.com/sina-byn/read-u'
                 >
                   <img src='/icons/github.svg' className='size-6' />
                 </a>
