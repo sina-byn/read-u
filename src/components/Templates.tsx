@@ -43,9 +43,9 @@ const Templates = () => {
               </button>
             </header>
 
-            <div className='h-full overflow-hidden'>
+            <div className='h-[calc(100%_-_3rem)] overflow-y-auto'>
               {templates.length > 0 ? (
-                <div className='inner grid grid-cols-4 h-[calc(100%_-_3rem)] gap-x-4 overflow-y-auto p-3'>
+                <div className='inner grid grid-cols-4 items-start gap-4 min-h-full p-3'>
                   {templates.map(t => {
                     const importHandler = () => {
                       setMarkdown(t.markdown);
@@ -93,6 +93,25 @@ const Templates = () => {
                       </div>
                     );
                   })}
+
+                  <div className='col-span-4 self-end flex justify-center mt-10'>
+                    <div className='max-w-full max-w-[500px] bg-info/10 text-gray-200 text-center border border-info rounded-md p-3'>
+                      <p className='text-sm'>
+                        All contributions are welcomed! If you have any README templates that you
+                        think can be useful to the community, please create a pull request to the
+                        project's GitHub repository
+                        <a
+                          target='_blank'
+                          rel='noopener noreferrer nofollow'
+                          href='https://github.com/sina-byn/read-u'
+                          className='text-info underline ml-1'
+                        >
+                          here
+                        </a>
+                        .
+                      </p>
+                    </div>
+                  </div>
                 </div>
               ) : (
                 <div className='min-w-[250px] text-center text-gray-400 py-8'>
