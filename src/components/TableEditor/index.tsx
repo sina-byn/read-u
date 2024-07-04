@@ -53,7 +53,7 @@ const TableEditor = () => {
           switch (key) {
             case 'c':
               const colIndex = +activeInput.dataset.col!;
-              deleteRow(colIndex);
+              deleteCol(colIndex);
               break;
 
             case 'r':
