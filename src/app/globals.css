@@ -23,6 +23,27 @@
   kbd {
     @apply inline-block bg-primary-light border border-neutral rounded-md py-1 px-2;
   }
+
+  /* * scrollbar styles */
+  body *::-webkit-scrollbar {
+    appearance: none;
+    width: 7px;
+    height: 7px;
+  }
+
+  body *::-webkit-scrollbar-thumb {
+    @apply bg-gray-700/60 rounded-md;
+  }
+
+  body *::-webkit-scrollbar-corner {
+    appearance: none;
+  }
+
+  @-moz-document url-prefix() {
+    body * {
+      scrollbar-width: thin;
+    }
+  }
 }
 
 @layer components {
