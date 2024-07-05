@@ -3,16 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "predev": "npm run css:generate && npm run template:generate",
     "dev": "next dev",
-    "prebuild": "npm run css:generate && npm run template:generate",
-    "build": "next build",
     "start": "next start",
+    "build": "next build",
+    "prebuild:all": "npm run css:generate && npm run template:generate",
+    "build:all": "npm run build",
     "lint": "next lint",
     "css:generate": "node scripts/generate-css.js",
+    "template:format": "biome format --write ./src/templates/templates.json",
     "template:generate": "node scripts/generate-templates.js",
-    "posttemplate:generate": "npm run template:format",
-    "template:format": "biome format --write ./src/templates/templates.json"
+    "posttemplate:generate": "npm run template:format"
   },
   "dependencies": {
     "@monaco-editor/react": "^4.6.0",
