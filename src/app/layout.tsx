@@ -14,7 +14,8 @@ import Tooltip from '@/components/ui/Tooltip';
 
 export const metadata: Metadata = {
   title: 'READ-U.md',
-  description: 'a web application that assists in creating GitHub README.md files, featuring real-time Markdown preview and a Markdown table editor, both supporting tab synchronization',
+  description:
+    'a web application that assists in creating GitHub README.md files, featuring real-time Markdown preview and a Markdown table editor, both supporting tab synchronization',
 };
 
 // * types
@@ -35,6 +36,7 @@ export default function RootLayout({ children }: LayoutProps) {
                   rel='noopener noreferrer nofollow'
                   href='https://www.linkedin.com/in/sina-bayandorian/'
                 >
+                  {/* eslint-disable-next-line */}
                   <img src='/icons/linkedin.svg' className='size-6' />
                 </a>
 
@@ -43,6 +45,7 @@ export default function RootLayout({ children }: LayoutProps) {
                   rel='noopener noreferrer nofollow'
                   href='https://github.com/sina-byn/read-u'
                 >
+                  {/* eslint-disable-next-line */}
                   <img src='/icons/github.svg' className='size-6' />
                 </a>
               </div>
