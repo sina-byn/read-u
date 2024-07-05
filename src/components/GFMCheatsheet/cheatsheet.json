@@ -1,0 +1,69 @@
+[
+  {
+    "category": "headings",
+    "self": [
+      ["# text", "<h1>text</h1>"],
+      ["## text", "<h2>text</h2>"],
+      ["### text", "<h3>text</h3>"],
+      ["#### text", "<h4>text</h4>"],
+      ["##### text", "<h5>text</h5>"],
+      ["###### text", "<h6>text</h6>"]
+    ]
+  },
+  {
+    "category": "styling text",
+    "self": [
+      ["Bold", "**text** or __text__", "<strong>text</strong>"],
+      ["Italic", "*text* or _text_", "<em>text</em>"],
+      ["Strike-Through", "~~text~~", "<del>text</del>"],
+      ["Subscript", "<sub>text<sub>", ""],
+      ["Superscript", "<sup>text</sup>", ""]
+    ],
+    "config": { "copyIndex": 1, "replace": ["\\s*or.*", ""] }
+  },
+  {
+    "category": "quoting text",
+    "self": [["> text", "<blockquote> <p>text</p> </blockquote>"]]
+  },
+  {
+    "category": "code",
+    "self": [
+      ["Quoting Code", "`code`", "<code>code</code>"],
+      ["Code Block", "```js code```", "<pre> <code class=\"js language-js\">code</code> </pre>"]
+    ]
+  },
+  {
+    "category": "links",
+    "self": [["[github](https://github.com)", "<a href=\"https://github.com\">github</a>"]]
+  },
+  {
+    "category": "images",
+    "self": [["![alt](src)", "<img alt=\"alt\" src=\"src\" />"]]
+  },
+  {
+    "category": "lists",
+    "self": [
+      ["Unordered", "all three can be within the same list"],
+      ["", " -  list item"],
+      ["", " *  list item"],
+      ["", "﹢ list item"],
+      ["Ordered", ""],
+      ["", " 1. list item"],
+      ["", " 2. list item"],
+      ["", " 3. list item"],
+      ["Task Lists", ""],
+      ["", "- [x] task is completed"],
+      ["", "- [ ] task is incomplete"]
+    ],
+    "config": {
+      "copyIndex": 1,
+      "noCopy": [0, 4, 8],
+      "replace": ["﹢", "+"]
+    }
+  },
+  {
+    "category": "paragraphs",
+    "self": [["You can create a new paragraph by leaving a blank line between lines of text.", ""]],
+    "config": { "noCopy": [0] }
+  }
+]

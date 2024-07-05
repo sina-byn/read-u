@@ -18,6 +18,7 @@ import Button from './ui/Button';
 import Templates from './Templates';
 import TableEditor from './TableEditor';
 import CopyButton from './ui/CopyButton';
+import GFMCheatsheet from './GFMCheatsheet';
 import DownloadButton from './DownloadButton';
 
 // * icons
@@ -63,6 +64,8 @@ const Toolbar = () => {
               <TableEditor />
             </TableEditorContextProvider>
           </Suspense>
+
+          <GFMCheatsheet />
 
           <div className='view-toggle flex'>
             <Button
