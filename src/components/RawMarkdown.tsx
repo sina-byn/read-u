@@ -7,8 +7,8 @@ const RawMarkdown = () => {
   const { markdown } = useEditorContext();
 
   return (
-    <div className='wrapper h-full bg-primary overflow-hidden py-8 px-10'>
-      <div className='h-full overflow-auto'>
+    <div className='wrapper h-full bg-primary overflow-hidden'>
+      <div className='h-full overflow-auto py-8 px-10'>
         <code className='whitespace-pre overflow-'>{markdown}</code>
       </div>
     </div>
