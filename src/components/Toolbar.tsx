@@ -118,7 +118,7 @@ const Toolbar = () => {
             />
           </Select>
 
-          <CopyButton text={markdown} />
+          <CopyButton text={markdown} className='bg-primary-light border border-neutral' />
 
           <DownloadButton />
         </div>
