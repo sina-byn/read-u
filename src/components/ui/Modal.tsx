@@ -11,6 +11,7 @@ import useClient from '@/hooks/useClient';
 type ModalProps = {
   open: boolean;
   setOpen: Dispatch<SetStateAction<boolean>>;
+  onClose?: Function;
   zIndex?: number;
   closeable?: boolean;
   className?: string;
@@ -22,6 +23,7 @@ type ModalProps = {
 const Modal = ({
   open,
   setOpen,
+  onClose,
   className,
   children,
   zIndex = 50,
@@ -31,7 +33,12 @@ const Modal = ({
 }: ModalProps) => {
   const isClient = useClient();
 
-  const closeHandler = () => closeable && setOpen(false);
+  const closeHandler = () => {
+    if (!closeable) return;
+
+    setOpen(false);
+    onClose?.();
+  };
 
   const clickHandler = (e: React.MouseEvent) => e.stopPropagation();
 
