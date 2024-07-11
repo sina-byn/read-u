@@ -11,6 +11,7 @@ import EditorContextProvider from '@/context/EditorContext';
 // * components
 import Toolbar from '@/components/Toolbar';
 import Tooltip from '@/components/ui/Tooltip';
+import TabSyncGuide from '@/components/TabSyncGuide';
 
 export const metadata: Metadata = {
   title: 'READ-U.md',
@@ -55,6 +56,8 @@ export default function RootLayout({ children }: LayoutProps) {
           <Toolbar />
           {children}
         </EditorContextProvider>
+
+        <TabSyncGuide />
 
         <ToastContainer theme='dark' autoClose={3000} toastClassName='!bg-primary-light mr-1' />
         <Tooltip />
