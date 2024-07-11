@@ -6,7 +6,7 @@ import 'react-tooltip/dist/react-tooltip.css';
 
 const Tooltip = () => {
   const tooltipClassName = `
-    max-w-[260px] !bg-primary border border-neutral !rounded-md
+    max-w-[260px] md:max-w-[500px] !bg-primary border border-neutral !rounded-md
     whitespace-pre-wrap [word-break:break-word] !opacity-100 overflow-hidden
   `;
 

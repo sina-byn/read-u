@@ -56,6 +56,6 @@
   }
 
   .i-shortcut {
-    @apply flex flex-wrap items-center gap-2 border-b last:border-b-0 border-neutral p-2;
+    @apply flex flex-wrap items-center gap-2 h-full border-b md:even:border-l last:border-b-0 md:[&:nth-of-type(7)]:border-b-0 border-neutral p-2;
   }
 }
