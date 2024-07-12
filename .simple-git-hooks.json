@@ -1,0 +1,3 @@
+{
+  "pre-commit": "node scripts/format.js"
+}

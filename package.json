@@ -12,7 +12,8 @@
     "css:generate": "node scripts/generate-css.js",
     "template:format": "prettier ./src/templates/templates.json --write",
     "template:generate": "node scripts/generate-templates.js",
-    "posttemplate:generate": "npm run template:format"
+    "posttemplate:generate": "npm run template:format",
+    "hooks:update": "simple-git-hooks"
   },
   "dependencies": {
     "@monaco-editor/react": "^4.6.0",
@@ -42,6 +43,7 @@
     "postcss": "^8",
     "prettier": "3.3.2",
     "sass": "^1.77.6",
+    "simple-git-hooks": "^2.11.1",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
   }
