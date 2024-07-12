@@ -10,7 +10,7 @@
     "build:all": "npm run build",
     "lint": "next lint",
     "css:generate": "node scripts/generate-css.js",
-    "template:format": "biome format --write ./src/templates/templates.json",
+    "template:format": "prettier ./src/templates/templates.json --write",
     "template:generate": "node scripts/generate-templates.js",
     "posttemplate:generate": "npm run template:format"
   },
@@ -29,7 +29,6 @@
     "tailwind-merge": "^2.3.0"
   },
   "devDependencies": {
-    "@biomejs/biome": "1.8.3",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
@@ -41,6 +40,7 @@
     "generate-github-markdown-css": "^6.3.0",
     "joi": "^17.13.3",
     "postcss": "^8",
+    "prettier": "3.3.2",
     "sass": "^1.77.6",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
