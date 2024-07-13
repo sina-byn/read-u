@@ -2,10 +2,15 @@
 
 ### Table of Contents
 
+- [Code Formatting](#code-formatting)
 - [Contributing to Templates](#contributing-to-templates)
 - [Bugs Fixes and Feature Requests](#bug-fixes-and-feature-requests)
 
 > Due to project's scope, pull requests directly to the main branch are accepted.
+
+### Code Formatting
+
+A pre-commit hook is configured for this project to format code before committing, so you don't need to do it yourself. Just make sure that it works as expected. If it doesn't, run `npm run hooks:update`.
 
 ### Contributing to Templates
 
@@ -14,10 +19,16 @@ To add a new template, first ensure that the template you are submitting is diff
 - Ensure that the screenshot and the markdown file have the same name.
 
 - Do not customize the `templates.json` manually; it is generated during build time.
+    - sina
 
 - Only `.png`, `.jpg`, `.jpeg`, and `.jfif` image extensions are accepted.
 
 - Before creating a pull request, build the project locally to receive informative errors in case of violations.
+
+- Make sure to include the front-matter within your markdown files :
+    - `title`
+    - `screenshot` : path to screenshot file
+    - `tags` : template tags - `string[]`
 
 <hr />
 
