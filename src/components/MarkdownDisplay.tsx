@@ -26,7 +26,7 @@ const MarkdownDisplay = () => {
     <div className={cn(theme, 'h-full rounded-b-md')}>
       <article
         dangerouslySetInnerHTML={{ __html: sanitizedHTML }}
-        className='markdown-body h-fit min-h-full rounded-b-md p-8'
+        className='markdown-body h-fit min-h-full rounded-b-md p-8 [&_ul]:list-[revert]'
       />
     </div>
   );
