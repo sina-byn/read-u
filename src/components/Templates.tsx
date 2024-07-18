@@ -35,7 +35,7 @@ const Templates = () => {
 
       <Modal open={open} setOpen={setOpen} className={cn(templates.length > 0 && 'i-modal')}>
         {closeHandler => (
-          <article className='h-full bg-primary rounded-md overflow-hidden'>
+          <article className='h-full bg-primary border border-neutral rounded-md overflow-hidden'>
             <header className='flex items-center justify-between gap-x-6 h-12 border-b border-neutral px-3'>
               <span className='capitalize'>templates</span>
               <button type='button' onClick={closeHandler}>
