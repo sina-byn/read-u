@@ -27,7 +27,7 @@ export const extractHeadings = (markdown: string) => {
   let index = -1;
 
   for (let line of lines) {
-    const headingRegex = /^\s{0,3}(#{1,6})(.+)?/g;
+    const headingRegex = /^(#{1,6})\s(.+)?/g;
     line = line.trimEnd();
     index++;
 
