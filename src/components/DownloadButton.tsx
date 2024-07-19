@@ -25,9 +25,9 @@ const DownloadButton = () => {
   };
 
   return (
-    <Button onClick={downloadHandler} className='download-button capitalize'>
+    <Button onClick={downloadHandler} className='download-button w-full sm:w-auto capitalize'>
       <Download size={22} className='shrink-0' />
-      download
+      <span className='sm:max-xl:hidden'>download</span>
     </Button>
   );
 };
