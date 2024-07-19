@@ -47,7 +47,7 @@ const TableEditor = () => {
   const vectorMarkdown = vectorToMarkdown(vector);
 
   const inputVector: InputVector = Array.from({ length: rowCount }, () =>
-    Array.from({ length: colCount }, () => createRef<HTMLDivElement>())
+    Array.from({ length: colCount }, () => createRef<HTMLDivElement>()),
   );
 
   const openHandler = () => setOpen(true);
@@ -122,7 +122,7 @@ const TableEditor = () => {
     <>
       <Button variant='secondary' onClick={openHandler}>
         <Table2 className='shrink-0' />
-        Table Editor
+        <span className='hidden md:inline'>Table Editor</span>
       </Button>
 
       <Modal open={open} setOpen={setOpen} className='i-modal'>
@@ -171,7 +171,7 @@ const TableEditor = () => {
               <div
                 className={cn(
                   'editor-wrapper relataive size-full overflow-hidden',
-                  view === 'preview' && 'hidden'
+                  view === 'preview' && 'hidden',
                 )}
               >
                 <div className='editor size-full relative !overflow-hidden'>
@@ -257,7 +257,7 @@ const TableEditor = () => {
               <code
                 className={cn(
                   'markdown-preview border-l border-neutral whitespace-pre overflow-auto p-8',
-                  view === 'editor' && 'hidden'
+                  view === 'editor' && 'hidden',
                 )}
               >
                 {vectorMarkdown}
