@@ -5,6 +5,19 @@ export const metadata: Metadata = {
   title: 'READ-U.md',
   description:
     'a web application that assists in creating GitHub README.md files, featuring real-time Markdown preview and a Markdown table editor, both supporting tab synchronization',
+  keywords: [
+    'markdown',
+    'markdown editor',
+    'online markdown editor',
+    'readme',
+    'readme editor',
+    'online readme editor',
+    'markdown table editor',
+    'online markdown table editor',
+    'readme.md',
+    'github readme',
+    'markdown cheatsheet',
+  ],
 };
 
 // * types
