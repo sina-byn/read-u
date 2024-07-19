@@ -18,10 +18,13 @@ export const metadata: Metadata = {
     'github readme',
     'markdown cheatsheet',
   ],
+  robots: { index: true, follow: true },
   openGraph: {
+    url: 'https://read-u.vercel.app/',
     images: '/images/read-u.png',
   },
   twitter: {
+    card: 'summary_large_image',
     images: '/images/read-u.png',
   },
 };
