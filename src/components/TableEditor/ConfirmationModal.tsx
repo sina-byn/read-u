@@ -18,7 +18,7 @@ const ConfirmationModal = () => {
     <>
       <Button variant='secondary' className='capitalize' onClick={setOpen.bind(null, true)}>
         <Trash size={22} className='shrink-0' />
-        reset
+        <span className='hidden lg:inline'>reset</span>
       </Button>
 
       <Modal
@@ -26,7 +26,7 @@ const ConfirmationModal = () => {
         setOpen={setOpen}
         backdropCloseable={false}
         backdropClassName='bg-black/60'
-        className='max-w-72 bg-primary border border-neutral rounded-md p-4'
+        className='max-w-96 bg-primary border border-neutral rounded-md p-4'
       >
         {closeHandler => {
           const resetHandler = () => {
@@ -41,13 +41,19 @@ const ConfirmationModal = () => {
 
           return (
             <>
-              <div className='text-xl text-center'>Are you sure you want to reset the table?</div>
+              <div className='text-lg sm:text-xl text-center px-4'>
+                Are you sure you want to reset the table?
+              </div>
 
-              <div className='controls flex gap-x-3 mt-6'>
-                <Button variant='secondary' onClick={closeHandler} className='flex-1'>
+              <div className='controls flex flex-col-reverse gap-y-3 mt-4'>
+                <Button
+                  variant='secondary'
+                  onClick={closeHandler}
+                  className='flex-1 text-sm lg:text-base py-1.5'
+                >
                   No
                 </Button>
-                <Button onClick={resetHandler} className='flex-1'>
+                <Button onClick={resetHandler} className='flex-1 text-sm lg:text-base py-1.5'>
                   Yes
                 </Button>
               </div>
