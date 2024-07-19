@@ -21,7 +21,7 @@ const ViewToggle = ({ view, setView }: ViewToggleProps) => {
   const viewToggleHandler = (newView: View) => setView(newView);
 
   return (
-    <div className='view-toggle flex'>
+    <div className='view-toggle hidden lg:flex'>
       <Button
         variant='secondary'
         onClick={viewToggleHandler.bind(null, 'editor')}
