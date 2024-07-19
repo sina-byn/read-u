@@ -47,14 +47,14 @@ const CopyButton = ({ text, className }: CopyButtonProps) => {
       disabled={copied}
       variant='success'
       onClick={copyHandler}
-      className={cn('w-24', className)}
+      className={cn('sm:w-auto xl:w-24', className)}
     >
       {copied ? (
         <ClipboardCheck size={22} className='shrink-0' />
       ) : (
         <Clipboard size={22} className='shrink-0' />
       )}
-      <span className='capitalize -mt-0.5'>{copied ? 'copied' : 'copy'}</span>
+      <span className='sm:max-xl:hidden capitalize -mt-0.5'>{copied ? 'copied' : 'copy'}</span>
     </Button>
   );
 };
