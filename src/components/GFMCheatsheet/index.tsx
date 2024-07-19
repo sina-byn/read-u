@@ -27,9 +27,9 @@ const GFMCheatsheet = () => {
         <span className='hidden lg:inline'>GFM Cheatsheet</span>
       </Button>
 
-      <Modal open={open} setOpen={setOpen} className='h-full py-4'>
+      <Modal open={open} setOpen={setOpen} className='w-full md:w-fit h-full py-4'>
         {closeHandler => (
-          <article className='gfm-cheatsheet h-full bg-primary border border-neutral rounded-md overflow-hidden'>
+          <article className='gfm-cheatsheet w-full h-full bg-primary border border-neutral rounded-md overflow-hidden'>
             <header className='flex items-center justify-between gap-x-6 h-12 border-b border-neutral px-3'>
               <span className='capitalize'>GFM Cheatsheet</span>
 
@@ -46,51 +46,55 @@ const GFMCheatsheet = () => {
                       {table.category}
                     </h4>
 
-                    <table className='w-full border-b border-neutral'>
-                      <tbody>
-                        {table.self.map((row, index) => (
-                          <tr
-                            key={index}
-                            className='bg-primary-dark odd:bg-primary-light hover:text-info whitespace-pre'
-                          >
-                            <td className='py-2 px-4'>{row[0]}</td>
-                            <td className='py-2 px-4'>{row[1]}</td>
+                    <div className='table-wrapper w-full overflow-x-auto'>
+                      <table className='min-w-full w-fit border-b border-neutral overflow-x-auto'>
+                        <tbody>
+                          {table.self.map((row, index) => (
+                            <tr
+                              key={index}
+                              className='bg-primary-dark odd:bg-primary-light hover:text-info whitespace-pre'
+                            >
+                              <td className='py-2 px-4'>{row[0]}</td>
+                              <td className='py-2 px-4'>{row[1]}</td>
 
-                            {row.length > 2 &&
-                              row
-                                .slice(2)
-                                .map(cell => <td key={cell}>{cell === 'no-copy' ? '' : cell}</td>)}
+                              {row.length > 2 &&
+                                row
+                                  .slice(2)
+                                  .map(cell => (
+                                    <td key={cell}>{cell === 'no-copy' ? '' : cell}</td>
+                                  ))}
 
-                            <td>
-                              {!table.config?.noCopy?.includes(index) &&
-                                (() => {
-                                  const copyIndex = table.config?.copyIndex ?? 0;
-                                  const [toReplace, replaceWith] = table.config?.replace ?? [];
-                                  let textToCopy = row[copyIndex].trim();
+                              <td>
+                                {!table.config?.noCopy?.includes(index) &&
+                                  (() => {
+                                    const copyIndex = table.config?.copyIndex ?? 0;
+                                    const [toReplace, replaceWith] = table.config?.replace ?? [];
+                                    let textToCopy = row[copyIndex].trim();
 
-                                  console.log(toReplace, replaceWith);
+                                    console.log(toReplace, replaceWith);
 
-                                  if (toReplace) {
-                                    textToCopy = textToCopy.replace(
-                                      new RegExp(toReplace, 'g'),
-                                      replaceWith,
+                                    if (toReplace) {
+                                      textToCopy = textToCopy.replace(
+                                        new RegExp(toReplace, 'g'),
+                                        replaceWith,
+                                      );
+                                    }
+
+                                    return (
+                                      <div className='flex justify-end'>
+                                        <CopyButton
+                                          text={textToCopy}
+                                          className='w-fit bg-transparent [&_>_span]:hidden'
+                                        />
+                                      </div>
                                     );
-                                  }
-
-                                  return (
-                                    <div className='flex justify-end'>
-                                      <CopyButton
-                                        text={textToCopy}
-                                        className='w-fit bg-transparent [&_>_span]:hidden'
-                                      />
-                                    </div>
-                                  );
-                                })()}
-                            </td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
+                                  })()}
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
                   </div>
                 ))}
               </div>
