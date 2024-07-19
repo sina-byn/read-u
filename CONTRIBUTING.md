@@ -2,11 +2,18 @@
 
 ### Table of Contents
 
+- [Contribution Guidelines](#contribution-guidelines)
 - [Code Formatting](#code-formatting)
 - [Contributing to Templates](#contributing-to-templates)
 - [Bugs Fixes and Feature Requests](#bug-fixes-and-feature-requests)
 
-> Due to project's scope, pull requests directly to the main branch are accepted.
+
+### Contribution Guidelines
+Pull requests directly to the main branch are allowed, but please ensure your commits are atomic. This means each commit should:
+
+- Focus on a single change or issue.
+- Include a clear and descriptive commit message.
+- Be tested to ensure functionality.
 
 ### Code Formatting
 
