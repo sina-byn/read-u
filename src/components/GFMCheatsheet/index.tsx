@@ -24,7 +24,7 @@ const GFMCheatsheet = () => {
         data-tooltip-content='Github Flavored Markdown Cheatsheet'
       >
         <FileCode2 size={22} className='shrink-0' />
-        GFM Cheatsheet
+        <span className='hidden lg:inline'>GFM Cheatsheet</span>
       </Button>
 
       <Modal open={open} setOpen={setOpen} className='h-full py-4'>
@@ -73,7 +73,7 @@ const GFMCheatsheet = () => {
                                   if (toReplace) {
                                     textToCopy = textToCopy.replace(
                                       new RegExp(toReplace, 'g'),
-                                      replaceWith
+                                      replaceWith,
                                     );
                                   }
 
