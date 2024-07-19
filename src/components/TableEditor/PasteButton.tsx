@@ -41,7 +41,7 @@ const PasteButton = () => {
   return (
     <Button onClick={pasteHandler}>
       <ClipboardPaste className='shrink-0' />
-      Paste
+      <span className='hidden lg:inline'>Paste</span>
     </Button>
   );
 };
