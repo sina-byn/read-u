@@ -143,7 +143,7 @@ const TableEditor = () => {
               <div className='left flex items-center gap-x-6'>
                 <ViewToggle view={view} setView={setView} />
 
-                <Button className='new-tab-button p-0' variant='secondary'>
+                <Button className='new-tab-button hidden lg:flex p-0' variant='secondary'>
                   <Link
                     target='_blank'
                     href='?table_editor=true'
@@ -156,17 +156,20 @@ const TableEditor = () => {
                 </Button>
               </div>
 
-              <div className='right flex items-center gap-x-6'>
+              <div className='right flex items-center gap-x-4 lg:gap-x-6'>
                 <ConfirmationModal />
 
                 <PasteButton />
 
-                <CopyButton text={vectorMarkdown} />
+                <CopyButton text={vectorMarkdown} className='max-sm:[&_span]:!hidden' />
               </div>
             </header>
 
             <div
-              className={cn('table-editor grid overflow-hidden', view === 'split' && 'grid-cols-2')}
+              className={cn(
+                'table-editor grid grid-rows-2 md:grid-rows-1 overflow-hidden',
+                view === 'split' && 'md:grid-cols-2',
+              )}
             >
               <div
                 className={cn(
@@ -256,7 +259,7 @@ const TableEditor = () => {
 
               <code
                 className={cn(
-                  'markdown-preview border-l border-neutral whitespace-pre overflow-auto p-8',
+                  'markdown-preview border-t md:border-t-0 md:border-l border-neutral whitespace-pre overflow-auto p-8',
                   view === 'editor' && 'hidden',
                 )}
               >
