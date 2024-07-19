@@ -52,11 +52,11 @@ const Select = <T extends string>({
   };
 
   return (
-    <div ref={selectRef} className='select relative w-fit'>
+    <div ref={selectRef} className={cn('select relative w-fit', className)}>
       <Button
         variant='secondary'
         onClick={toggleHandler}
-        className={cn('justify-between overflow-hidden', className)}
+        className='justify-between overflow-hidden w-full'
       >
         <div className='inner flex items-center gap-x-3 overflow-hidden'>
           <span className='shrink-0'>{icon}</span>
@@ -70,7 +70,7 @@ const Select = <T extends string>({
       <div
         className={cn(
           'options absolute inset-x-0 z-10 w-full bg-primary-dark border border-neutral rounded-md overflow-hidden transition-all duration-300 overflow-hidden mt-2',
-          open ? 'top-full pointer-events-auto opacity-100' : 'top-2 pointer-events-none opacity-0'
+          open ? 'top-full pointer-events-auto opacity-100' : 'top-2 pointer-events-none opacity-0',
         )}
       >
         {options.map(option => (
@@ -84,7 +84,7 @@ const Select = <T extends string>({
               'flex items-center justify-center w-full h-8 truncate capitalize hover:bg-primary-dark border-b border-neutral last:border-b-0 cursor-pointer px-10',
               option.value === selectedOption.value
                 ? 'bg-blue-900/60'
-                : 'bg-primary even:bg-primary-light'
+                : 'bg-primary even:bg-primary-light',
             )}
           >
             {option.title}
