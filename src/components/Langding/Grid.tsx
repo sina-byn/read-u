@@ -54,12 +54,17 @@ const Grid = ({ id, className }: GridProps) => {
   ));
 
   useEffect(() => {
-    const timerId = setTimeout(() => {
+    const intervalId = setInterval(() => animate(id, 'center'), 12000);
+
+    const timeoutId = setTimeout(() => {
       animate(id, 'center');
-      clearTimeout(timerId);
+      clearTimeout(timeoutId);
     }, 1000);
 
-    return () => clearTimeout(timerId);
+    return () => {
+      clearTimeout(timeoutId);
+      clearInterval(intervalId);
+    };
   }, []);
 
   return (
