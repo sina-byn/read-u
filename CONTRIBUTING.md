@@ -19,7 +19,6 @@ To add a new template, first ensure that the template you are submitting is diff
 - Ensure that the screenshot and the markdown file have the same name.
 
 - Do not customize the `templates.json` manually; it is generated during build time.
-    - sina
 
 - Only `.png`, `.jpg`, `.jpeg`, and `.jfif` image extensions are accepted.
 
