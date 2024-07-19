@@ -55,7 +55,7 @@ const Toolbar = () => {
 
   return (
     <header className='toolbar flex items-center h-fit bg-primary py-4'>
-      <div className='i-container flex items-center justify-between gap-x-6'>
+      <div className='i-container flex flex-col sm:flex-row items-center justify-between gap-x-6 gap-y-4'>
         <div className='left flex items-center gap-x-6'>
           <Templates />
 
@@ -67,7 +67,7 @@ const Toolbar = () => {
 
           <GFMCheatsheet />
 
-          <div className='view-toggle flex'>
+          <div className='view-toggle hidden xl:flex'>
             <Button
               variant='secondary'
               onClick={viewToggleHandler.bind(null, 'tabs')}
@@ -91,7 +91,7 @@ const Toolbar = () => {
 
           <Button
             variant='secondary'
-            className='new-tab-button p-0'
+            className='new-tab-button hidden xl:flex p-0'
             data-tooltip-id='tooltip'
             data-tooltip-content='open in new tab'
           >
@@ -101,11 +101,11 @@ const Toolbar = () => {
           </Button>
         </div>
 
-        <div className='right flex items-center gap-x-6'>
+        <div className='right flex flex-col sm:flex-row items-center gap-x-6 gap-y-4 w-full sm:w-fit'>
           <Select<Theme>
             key={theme}
             onChange={changeHandler}
-            className='w-52 capitalize'
+            className='w-full sm:w-52 capitalize'
             icon={<Palette size={22} />}
             defaultOption={{ title: theme.replace(/-/g, ' '), value: theme }}
             options={themes.map(theme => ({ title: theme.replace(/-/g, ' '), value: theme }))}
@@ -118,7 +118,7 @@ const Toolbar = () => {
             />
           </Select>
 
-          <CopyButton text={markdown} className='bg-primary-light border border-neutral' />
+          <CopyButton text={markdown} className='w-full bg-primary-light border border-neutral' />
 
           <DownloadButton />
         </div>
