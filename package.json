@@ -2,6 +2,11 @@
   "name": "readme",
   "version": "0.1.0",
   "private": true,
+  "author": "Sina Bayandorian <sina.sina.bayan@protonmail.com> (https://portfolio-sina-byn.vercel.app/)",
+  "description": "A web application that assists in creating GitHub README.md files, featuring real-time Markdown preview and a Markdown table editor, both supporting tab synchronization",
+  "repository": "github:sina-byn/read-u",
+  "homepage": "https://github.com/sina-byn/read-u#readme",
+  "license": "MIT",
   "scripts": {
     "dev": "next dev",
     "start": "next start",
@@ -48,5 +53,22 @@
     "simple-git-hooks": "^2.11.1",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/sina-byn/read-u/issues",
+    "email": "sina.sina.bayan@protonmail.com"
+  },
+  "keywords": [
+    "markdown",
+    "markdown-editor",
+    "online-markdown-editor",
+    "readme",
+    "readme-editor",
+    "online-readme-editor",
+    "markdown-table-editor",
+    "online-markdown-table-editor",
+    "readme.md",
+    "github-readme",
+    "markdown-cheatsheet"
+  ]
 }
