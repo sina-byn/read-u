@@ -30,7 +30,7 @@ const Templates = () => {
     <>
       <Button variant='secondary' className='capitalize' onClick={setOpen.bind(null, true)}>
         <LayoutTemplate className='' />
-        templates
+        <span className='hidden lg:inline'>templates</span>
       </Button>
 
       <Modal open={open} setOpen={setOpen} className={cn(templates.length > 0 && 'i-modal')}>
