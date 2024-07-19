@@ -22,7 +22,7 @@ const Home = () => {
   return (
     <main className='h-[calc(100svh_-_8.5rem)] py-8'>
       <div className='i-container flex gap-x-6 h-full overflow-hidden'>
-        <aside className='sections shrink-0 w-[300px] bg-primary border border-neutral rounded-md overflow-hidden'>
+        <aside className='sections shrink-0 hidden lg:block w-[300px] bg-primary border border-neutral rounded-md overflow-hidden'>
           <header className='flex items-center gap-x-6 h-10 text-info border-b border-neutral px-4'>
             <span>
               {headings.length} {headings.length === 1 ? 'section' : 'sections'}
@@ -56,8 +56,8 @@ const Home = () => {
         <div className='size-full'>
           <div
             className={cn(
-              'split-view grid grid-cols-2 gap-x-6 h-full',
-              view !== 'split' && 'hidden'
+              'split-view hidden md:grid grid-cols-2 gap-x-6 h-full',
+              view !== 'split' && 'md:hidden',
             )}
           >
             <div className='left grow overflow-hidden'>
@@ -74,7 +74,7 @@ const Home = () => {
             </div>
           </div>
 
-          <div className={cn('tabs-view h-full', view !== 'tabs' && 'hidden')}>
+          <div className={cn('tabs-view h-full', view !== 'tabs' && 'md:hidden')}>
             <Tabs heads={['editor', 'preview', 'raw']}>
               <Editor />
               <MarkdownDisplay />
