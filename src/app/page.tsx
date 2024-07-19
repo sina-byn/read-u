@@ -65,6 +65,51 @@ const HomePage = () => {
           className='landing-banner border-y xl:border-x border-neutral xl:rounded-md mt-12 md:mt-20'
         />
 
+        <div className='landing-features bg-primary-dark p-4 mt-10 md:mt-20'>
+          <h3 className='text-2xl text-info font-bold'>Features</h3>
+          <ul className='space-y-3 mt-4'>
+            <li className='flex gap-x-3'>
+              <div className='marker size-2 bg-info rotate-45 mt-2' />
+              View Toggle Functionality
+            </li>
+
+            <li className='flex gap-x-3'>
+              <div className='marker size-2 bg-info rotate-45 mt-2' />
+              Tab Synchronization
+            </li>
+
+            <li className='flex gap-x-3'>
+              <div className='marker size-2 bg-info rotate-45 mt-2' />
+              Expand Mode and Fullscreen Mode
+            </li>
+
+            <li className='flex gap-x-3'>
+              <div className='marker size-2 bg-info rotate-45 mt-2' />
+              Markdown Table Editor
+            </li>
+
+            <li className='flex gap-x-3'>
+              <div className='marker size-2 bg-info rotate-45 mt-2' />
+              Multiple Themes Providing Better Accessibility
+            </li>
+
+            <li className='flex gap-x-3'>
+              <div className='marker size-2 bg-info rotate-45 mt-2' />
+              Template Importing Functionality
+            </li>
+
+            <li className='flex gap-x-3'>
+              <div className='marker size-2 bg-info rotate-45 mt-2' />
+              Automatic Section Detection
+            </li>
+
+            <li className='flex gap-x-3'>
+              <div className='marker size-2 bg-info rotate-45 mt-2' />
+              GFM Cheatsheet
+            </li>
+          </ul>
+        </div>
+
         <footer className='landing-footer text-center py-10 md:py-20'>
           Made with by &#10084;&nbsp;
           <a
