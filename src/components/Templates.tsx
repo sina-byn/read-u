@@ -45,7 +45,7 @@ const Templates = () => {
 
             <div className='h-[calc(100%_-_3rem)] overflow-y-auto'>
               {templates.length > 0 ? (
-                <div className='inner grid grid-cols-4 items-start gap-4 min-h-full p-3'>
+                <div className='inner grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 items-start gap-4 min-h-full p-3'>
                   {templates.map(t => {
                     const importHandler = () => {
                       setMarkdown(t.markdown);
@@ -94,7 +94,7 @@ const Templates = () => {
                     );
                   })}
 
-                  <div className='col-span-4 self-end flex justify-center mt-10'>
+                  <div className='sm:col-span-2 lg:col-span-3 xl:col-span-4 self-end flex justify-center'>
                     <div className='max-w-full max-w-[500px] bg-info/10 text-gray-200 text-center border border-info rounded-md p-3'>
                       <p className='text-sm'>
                         All contributions are welcomed! If you have any README templates that you
