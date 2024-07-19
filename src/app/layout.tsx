@@ -18,6 +18,12 @@ export const metadata: Metadata = {
     'github readme',
     'markdown cheatsheet',
   ],
+  openGraph: {
+    images: '/images/read-u.png',
+  },
+  twitter: {
+    images: '/images/read-u.png',
+  },
 };
 
 // * types
