@@ -24,30 +24,31 @@ const themeCSS = theme => {
 (async () => {
   const CSS = themes.reduce(
     (CSS, theme) => CSS + wrapWith(`.${selector(theme)} {[]}`, themeCSS(theme)),
-    ''
+    '',
   );
 
   if (!CSS) throw new Error(chalk.redBright('failed fetching github markdown css'));
 
   const { css: compiledCSS } = sass.compileString(CSS, { style: 'compressed' });
-  const query = querystring.stringify({ input: compiledCSS });
+  // const query = querystring.stringify({ input: compiledCSS });
   let minifiedCSS = compiledCSS;
 
-  try {
-    const res = await fetch(`https://www.toptal.com/developers/cssminifier/api/raw`, {
-      method: 'POST',
-      body: query,
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-        'Content-Length': query.length,
-      },
-    });
+  // * commented as it caused style overlaps and ruined the output css
+  // try {
+  //   const res = await fetch(`https://www.toptal.com/developers/cssminifier/api/raw`, {
+  //     method: 'POST',
+  //     body: query,
+  //     headers: {
+  //       'Content-Type': 'application/x-www-form-urlencoded',
+  //       'Content-Length': query.length,
+  //     },
+  //   });
 
-    minifiedCSS = await res.text();
-  } catch (err) {
-    console.error(chalk.redBright(err));
-    console.log(chalk.blueBright('css optimization skipped'));
-  }
+  //   minifiedCSS = await res.text();
+  // } catch (err) {
+  //   console.error(chalk.redBright(err));
+  //   console.log(chalk.blueBright('css optimization skipped'));
+  // }
 
   const output = path.join(__dirname, '..', 'src', 'app', 'gfm.css');
   fs.writeFile(output, minifiedCSS, 'utf-8');
