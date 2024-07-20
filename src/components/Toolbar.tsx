@@ -95,7 +95,11 @@ const Toolbar = () => {
             data-tooltip-id='tooltip'
             data-tooltip-content='open in new tab'
           >
-            <Link href='/' target='_blank' className='h-full flex items-center justify-center px-3'>
+            <Link
+              href='/editor'
+              target='_blank'
+              className='h-full flex items-center justify-center px-3'
+            >
               <PictureInPicture size={22} className='shrink-0 -scale-y-100' />
             </Link>
           </Button>

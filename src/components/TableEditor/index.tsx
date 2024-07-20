@@ -146,7 +146,7 @@ const TableEditor = () => {
                 <Button className='new-tab-button hidden lg:flex p-0' variant='secondary'>
                   <Link
                     target='_blank'
-                    href='?table_editor=true'
+                    href='/editor?table_editor=true'
                     className='h-full flex items-center justify-center px-3'
                     data-tooltip-id='tooltip'
                     data-tooltip-content='open in new tab'
