@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 // * components
-import Grid from '@/components/Langding/Grid';
+import Grid from '@/components/Landing/Grid';
 
 // * icons
 import { ArrowRight } from 'lucide-react';
